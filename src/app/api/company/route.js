@@ -5,7 +5,7 @@ import bcrypt from "bcryptjs";
 
 export async function POST(request) {
   try {
-    const { email, password, company_name } = await request.json();
+    const { email, password, username } = await request.json();
     await connectDb();
   
     const existingCompany = await Company.findOne({ email });
@@ -17,7 +17,7 @@ export async function POST(request) {
     const hashedPassword = await bcrypt.hash(password, 5);
     const newCompany = new Company({
       email,
-      company_name,
+      username,
       password: hashedPassword,
     });
     await newCompany.save();

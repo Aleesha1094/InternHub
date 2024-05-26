@@ -2,6 +2,7 @@
 import { useSession } from "next-auth/react";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 function ForgetPassword() {
     const [error, setError] = useState("");
@@ -57,25 +58,37 @@ function ForgetPassword() {
 
     return (  
         sessionStatus !== "authenticated" && (   
-          <div class="container mt-5">
-          <div class="row justify-content-center">
-              <div class="col-md-6">
-                  <form onSubmit={handleSubmit} class="bg-light p-4 rounded shadow">
-                      <h1 class="text-center fw-bold mt-3">Forget Password</h1>
-                      <div class="form-floating mb-3">
-                        <input type="email" class="form-control mt-5 " id="floatingInput" placeholder="name@example.com" required/>
-                        <label for="floatingInput">Email address</label>
-                      </div>
-                      {error && <p class="text-danger">{error}</p>}
-                      <div className= "mt-3" >
-                        <button type="submit" class="btn mb-3" style={{ backgroundColor: '#b100cd', color: 'white', display: 'inline-block', borderRadius: '10px' }}>Submit</button>
-                        <br/>
-                        <a href="/CompanyLogin">Login</a>
-                      </div>
-                  </form>                                                       
-              </div>
+          <div className="flex items-center justify-center min-h-screen bg-gray-100">
+      <div className="w-full max-w-md">
+        <form onSubmit={handleSubmit} className="bg-white p-8 rounded-lg shadow-lg">
+          <h1 className="text-2xl font-bold text-center">Forget Password</h1>
+          <div className="space-y-4 mt-6">
+            <div>
+              <label className="block font-bold">Email address</label>
+              <input
+                type="email"
+                className="w-full px-4 py-2 mt-1 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+                id="floatingInput"
+                placeholder="name@example.com"
+                required
+              />
+            </div>
+            {error && <p className="text-red-500 mt-2">{error}</p>}
           </div>
-      </div>     
+          <div className="flex justify-center mt-6">
+            <button
+              type="submit"
+              className="px-6 py-2 bg-purple-600 text-white font-bold rounded-lg hover:bg-purple-700 transition duration-300"
+            >
+              Submit
+            </button>
+          </div>
+          <div className="text-center mt-4">
+            <Link href="/companylogin" className="text-blue-600 underline">Login</Link>
+          </div>
+        </form>
+      </div>
+    </div>
     ));
 }
   

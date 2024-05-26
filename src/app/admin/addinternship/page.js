@@ -1,24 +1,22 @@
 "use client"
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
-import DatePicker from "react-datepicker";
 
 function AddInternship() {
     const [error, setError] = useState(""); 
     const router = useRouter();
     const { data: session, status: sessionStatus } = useSession();
-    const [end_date, setEndDate] = useState('');
-
-    // const companyId = session.user.id;
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         const title = e.target[0].value;
-        const city = e.target[2].value;
-        const description = e.target[4].value;
-        const url = e.target[3].value;
+        const location = e.target[2].value;
+        const description = e.target[6].value;
+        const url = e.target[4].value;
         const company_title = e.target[1].value;
+        const duration = e.target[5].value;
+        const eligibilityCriteria = e.target[3].value;
       
         try {
           const res = await fetch("/api/internships", {
@@ -28,9 +26,11 @@ function AddInternship() {
             },
             body: JSON.stringify({
                 title,
-                city,
+                location,
                 description,
                 url,
+                eligibilityCriteria,
+                duration,
                 company_title,
             }),
           });
@@ -47,66 +47,83 @@ function AddInternship() {
         }
       };
 
-    //   if (sessionStatus === "loading") {
-    //     return <h1>Loading...</h1>;
-    //   }
+      if (sessionStatus === "loading") {
+        return <h1 className="text-center text-gray-500">Loading...</h1>;
+      }
 
     return (  
-      <div className="container mt-5 mb-5">
-      <h1 className="text-center fw-bold mt-5">Add Internship</h1>
-      <form onSubmit={handleSubmit} style={{ maxWidth: '500px', margin: '0 auto' }} className="bg-light p-4 rounded shadow">
-        <div className="mb-3 mt-3 ">
-          <label className="fw-bold">Internship Title</label>
+      <div className="container mx-auto mt-10 mb-10">
+      <h1 className="text-4xl text-center font-extrabold mb-6 text-purple-800">Add Internship</h1>
+      <form onSubmit={handleSubmit} className="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-md space-y-6">
+        <div className="mb-6">
+          <label className="block px-1 font-semibold mb-2">Internship Title</label>
           <input
             type="title"
-            className="form-control"
+            className="form-control w-full px-4 py-2 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:shadow-md"
             id="floatingInput"
             placeholder="Title"
             required
-            style={{ backgroundColor: '#f0f0f0', borderRadius: '10px' }}
           />
         </div>
-        <div className="form-group mt-3">
-             <label className="fw-bold">Company Title</label>
+        <div className="mb-4">
+             <label className="font-bold block mb-2">Company Title</label>
               <input
                 type="text"
-                className="form-control"
+                className="form-control w-full px-4 py-2 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:shadow-md"
                 id="floatingInput"
                 placeholder="Company Name"
                 required
-                style={{ backgroundColor: '#f0f0f0' , borderRadius: '10px'}}
               />
         </div>
-        <div className="mb-3">
-          <label className="fw-bold">City</label>
+        <div className="mb-4">
+          <label className="font-bold block mb-2">Location</label>
           <input
-            type="city"
-            className="form-control"
+            type="location"
+            className="form-control w-full px-4 py-2 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:shadow-md"
             id="floatingInput"
-            placeholder="City"
+            placeholder="Location"
             required
-            style={{ backgroundColor: '#f0f0f0', borderRadius: '10px' }}
           />
         </div>
-        <div className="mb-3">
-          <label className="fw-bold">Website URL</label>
+        <div className="mb-4">
+          <label className="font-bold block mb-2">Eligibility Criteria</label>
+          <input
+            type="criteria"
+            className="form-control w-full px-4 py-2 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:shadow-md"
+            id="floatingInput"
+            placeholder="Eligibility Criteria for Internship"
+            required
+          />
+        </div>
+        <div className="mb-4">
+          <label className="font-bold mb-2">Website URL</label>
           <input
             type="url"
-            className="form-control"
+            className="form-control w-full px-4 py-2 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:shadow-md"
             id="floatingInput"
-            placeholder="Your website URL(optional)"
-            style={{ backgroundColor: '#f0f0f0', borderRadius: '10px' }}
+            placeholder="Company Website URL(optional)"
           />
         </div>
-        <div className="mb-3 form-outline">
-          <label class="form-label"className="fw-bold" for="description">Description</label>
-          <textarea class="form-control" id="description" rows="4"  style={{ backgroundColor: '#f0f0f0', borderRadius: '10px' }}></textarea>
+        <div className="mb-4">
+          <label className="font-bold mb-2">Duration</label>
+          <input
+            type="duration"
+            className="form-control w-full px-4 py-2 bg-gray-100 rounded-lg focus:outline-none focus:shadow-md focus:ring-2 focus:ring-purple-500"
+            id="floatingInput"
+            placeholder="Internship Duration"
+          />
         </div>
-        <p style={{ color: 'red', fontSize: '14px' }}>{error && error}</p>
-        <button type="submit" className="btn btn-block text-center fw-bold" style={{ backgroundColor: '#b100cd', color: 'white', display: 'block', margin: '0 auto', borderRadius: '10px' }}>
-          Submit
-        </button>
-          <div  className= "mt-3" style={{ textAlign: 'center' }}>
+        <div className="mb-4">
+          <label className="font-bold block mb-2" for="description">Description</label>
+          <textarea 
+            className="form-control w-full px-4 py-2 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+            id="description" rows="4" placeholder="Gave Description of Internship"></textarea>
+        </div>
+        <p className="text-red-500 text-sm">{error && error}</p>
+        <button type="submit" className="py-2 px-4 bg-purple-600 text-white font-bold rounded-lg hover:bg-purple-700 transition duration-300">
+            Submit
+          </button>         
+    <div className= "mt-3 text-center">
       </div> 
       </form>
       <div className="pb-5"></div>

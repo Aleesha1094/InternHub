@@ -5,9 +5,9 @@ import Company_Internships from "@/models/Company_Internships";
 export async function PUT(request, { params }) {
     try {
       const { id } = params;
-      const { Title: title, City: city, Description: description, C_url: c_url, Contact_email: contact_email, End_date: end_date  } = await request.json();
+      const { Title: title, City: city, Description: description, C_url: c_url, Contact_email: contact_email, Duration: duration  } = await request.json();
       await connectDb();
-      const updatedCompany_Internships = await Company_Internships.findByIdAndUpdate(id, { title, city, description, c_url, contact_email, end_date  }, { new: true });
+      const updatedCompany_Internships = await Company_Internships.findByIdAndUpdate(id, { title, city, description, c_url, contact_email, duration, eligibilityCriteria }, { new: true });
   
       if (!updatedCompany_Internships) {
         console.error("Internship Not Found!");

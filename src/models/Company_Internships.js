@@ -14,6 +14,10 @@ const CInternshipSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    eligibilityCriteria: {
+        type: String,
+        required: true
+    },
     description : {
         type: String,
         required: true
@@ -28,7 +32,7 @@ const CInternshipSchema = mongoose.Schema({
         trim: true, 
         match: [/^\S+@\S+\.\S+$/, 'Please enter a valid email address!'],
     },
-    end_date : {
+    duration : {
         type: Date,
         required: true
     },

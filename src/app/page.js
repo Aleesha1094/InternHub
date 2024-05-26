@@ -1,37 +1,38 @@
 "use client";
 import Categories from "@/components/Categories";
-import Footer from "@/components/Footer";
 import HeroSection from "@/components/HeroSection";
 import React, { useEffect, useState } from "react";
+import Test from "@/components/Test";
 
 export default function Home() {
-  const [error, setError] = useState("");
-  const [internships, setInternships] = useState([]); 
+  // const [error, setError] = useState("");
+  // const [internships, setInternships] = useState([]); 
 
-  useEffect(() => {
-    async function fetchInternships() {
-      try {
-        const response = await fetch('/api/internships');
-        if (response.ok) {
-          const data = await response.json();
-          setInternships(data.Internshipss);
-        }  else {
-            setError(response.error);
-        }
-      } catch (error) {
-        console.error(error);
-        throw new Error('Failed to Fetch Internships!');
-      }
-    }
+  // useEffect(() => {
+  //   async function fetchInternships() {
+  //     try {
+  //       const response = await fetch('/api/internships');
+  //       if (response.ok) {
+  //         const data = await response.json();
+  //         setInternships(data.Internshipss);
+  //       }  else {
+  //           setError(response.error);
+  //       }
+  //     } catch (error) {
+  //       console.error(error);
+  //       throw new Error('Failed to Fetch Internships!');
+  //     }
+  //   }
   
-    fetchInternships();
-  }, []);
+  //   fetchInternships();
+  // }, []);
 
   return (
-    <main>
+    
+    <main className="flex-grow">
       <HeroSection/>
       <Categories/>
-      <Footer/>
+      {/* <Footer/> */}
       {/* {internships && internships.length > 0 ? (
         <ul>
         {internships.map((internship) => (

@@ -1,17 +1,9 @@
 "use client";
 import React, { useEffect, useState } from "react";
-// import { useSession } from "next-auth/react";
 
 function StudentFeedback() {
   const [error, setError] = useState("");
-//   const { data: session, status: sessionStatus } = useSession();
   const [feedbacks, setFeedback] = useState([]);
-
-//   useEffect(() => {
-//     if (sessionStatus === "authenticated") {
-//         router.replace('/admin')
-//     }
-//   }, [session, router]);
 
 useEffect(() => {
     async function fetchFeedback() {
@@ -28,28 +20,38 @@ useEffect(() => {
         setError('Error Fetching Feedback!');
       }
     }
-  
     fetchFeedback();
   }, []);
 
-  
-    
   return (
-    // sessionStatus !== "authenticated" && (   
-        <div>
-        <h1>Student Feedbacks</h1>
-        <ul>
-        {feedbacks && feedbacks.map((feedback) => (
-        <div key={feedback._id}>
-            <h4>Feedback</h4>
-            {feedback.user_name && <li>Name: {feedback.user_name}</li>}
-            {feedback.user_email && <li>Email: {feedback.user_email}</li>}
-            {feedback.subject && <li>Subject: {feedback.subject}</li>}
-            {feedback.message && <li>Message: {feedback.message}</li>}
+      <div className="min-h-screen bg-gray-100 py-20">
+        <div className="container mx-auto p-4">
+          <div className="border-t-4 border-purple-800 py-1"></div>
+            <h1 className="text-2xl font-bold text-center text-purple-800 cursor-default p-3">STUDENT FEEDBACKS</h1>
+            <div className="border-t-4 border-purple-800 mb-16"></div>
+              {feedbacks && feedbacks.length > 0 ? (
+                <ul className="space-y-6">
+                  {feedbacks && feedbacks.map((feedback) => (
+                     <div key={feedback._id} className="p-6 bg-white rounded-lg shadow-md hover:shadow-2xl transition-shadow duration-300">
+                       <li className="mb-2 text-center">
+                          <h4 className="text-3xl font-bold text-purple-700 cursor-default">
+                            <span className="px-9 text-sm text-black">Feedback from : </span>
+                            {feedback.user_name}
+                          </h4>
+                       </li>
+                       <div className="space-y-2 cursor-default">
+                         <p><span className="font-bold">User Email :</span>  {feedback.user_email}</p>
+                         <p><span className="font-bold">Subject :</span>  {feedback.subject}</p>
+                         <p><span className="font-bold">Message :</span>  {feedback.message}</p>                
+                       </div>
+                     </div>
+                   ))}
+                </ul>
+              ) : (
+              <p className="text-center text-2xl text-gray-600">Loading...</p>
+            )}
+          {error && <p className="text-center text-red-500 mt-4">{error}</p>}
         </div>
-        ))}
-        </ul>
-        <p>{error && error}</p>
       </div>
   );
 }

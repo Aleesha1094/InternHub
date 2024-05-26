@@ -28,9 +28,10 @@ export async function scrapeAndSave() {
 
             if (updateInternship) {
                 updateInternship.url = data.url;
+                updateInternship.eligibilityCriteria = data.eligibilityCriteria;
                 updateInternship.description = descriptions;
                 updateInternship.title = data.title;
-                updateInternship.city = "FSD";
+                updateInternship.location = data.location || "FSD";
                 await updateInternship.save();
             } else {
             const internship = new Internships({
@@ -38,7 +39,7 @@ export async function scrapeAndSave() {
                 url: data.url,
                 description: descriptions,
                 title: data.title,
-                city: "FSD",
+                location: data.location || "FSD",
                 eligibilityCriteria: data.eligibilityCriteria,
                 // detail: data.detail,
                 // duration: data.duration,

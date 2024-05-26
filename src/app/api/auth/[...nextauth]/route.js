@@ -16,9 +16,7 @@ export const authOptions = {
         token.id = user.id;
         token.email = user.email;
         token.role = user.role;
-        if (user.role === 'company') {
-          token.company_name = user.company_name;
-        }
+        token.username = user.username;
       }
       return token;
     },
@@ -27,9 +25,7 @@ export const authOptions = {
         session.user.id = token.id;
         session.user.email = token.email;
         session.user.role = token.role;
-        if (token.role === 'company') {
-          session.user.company_name = token.company_name;
-        }
+        session.user.username = token.username;
       }
       return session;
     },
@@ -56,10 +52,11 @@ export const authOptions = {
                 id: user.id,
                 email: user.email,
                 role: 'company',
-                company_name: user.company_name,
+                username: user.username,
               };
             }
           }
+          return null;
         } catch (err) {
           throw new Error(err);
         }
@@ -86,9 +83,11 @@ export const authOptions = {
                 id: user.id,
                 email: user.email,
                 role: 'admin',
+                username: user.username,
               };
             }
           }
+          return null;
         } catch (err) {
           throw new Error(err);
         }

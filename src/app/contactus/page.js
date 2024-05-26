@@ -50,54 +50,56 @@ function ContactUs() {
       };
 
   return (     
-    <div className="container  mb-5">
-    <div className="row justify-content-center">
-      <div className="col-md-6 p-4">      
-        <form onSubmit={handleSubmit} style={{ maxWidth: '500px', margin: '0 auto' }} className="bg-light p-4 rounded shadow">
-        <h1 className="fw-bold mt-5">Let’s Talk</h1>
-            <div className="form-row mt-3">
-            <div className="form-group col-md-6">
-              <label className="fw-bold">Full Name</label>
+    <div className="container mx-auto mb-5">
+    <div className="flex justify-center">
+      <div className="w-full max-w-md p-4">
+        <form onSubmit={handleSubmit} className="bg-white p-8 rounded-lg shadow-lg">
+          <h1 className="text-2xl font-bold text-center mt-5">Let’s Talk</h1>
+          <div className="grid grid-cols-1 gap-4 mt-3">
+            <div>
+              <label className="font-bold">Full Name</label>
               <input
                 type="text"
-                className="form-control"
+                className="w-full px-4 py-2 mt-1 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 border-b-2 border-black transition duration-300"    
                 id="floatingInput"
                 placeholder="Full Name"
                 required
-                style={{ borderRadius: '10px', borderBottom: '2px solid black', transition: 'border-bottom-color 0.3s' }}
               />
             </div>
-            <div className="form-group col-md-6 mt-3">
-              <label className="fw-bold">Email</label>
+            <div className="mt-3">
+              <label className="font-bold">Email</label>
               <input
                 type="email"
-                className="form-control"
+                className="w-full px-4 py-2 mt-1 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 border-b-2 border-black transition duration-300"    
                 id="floatingInput"
                 placeholder="name@example.com"
                 required
-                style={{ borderRadius: '10px', borderBottom: '2px solid black', transition: 'border-bottom-color 0.3s' }}
               />
             </div>
           </div>
-          <div className="form-group mt-3">
-            <label className="fw-bold">Subject</label>
+          <div className="mt-3">
+            <label className="font-bold">Subject</label>
             <input
               type="text"
-              className="form-control"
+              className="w-full px-4 py-2 mt-1 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 border-b-2 border-black transition duration-300"    
               id="floatingInput"
               placeholder="Subject"
               required
-              style={{ borderRadius: '10px', borderBottom: '2px solid black', transition: 'border-bottom-color 0.3s' }}
             />
           </div>
-          <div className="mb-3 form-outline mt-3">
-            <label   className="fw-bold" htmlFor="description">Description</label>
-            <textarea className="form-control" id="description" rows="4" required style={{ borderRadius: '10px', borderBottom: '2px solid black', transition: 'border-bottom-color 0.3s' }}></textarea>
+          <div className="mt-3">
+            <label   className="font-bold" htmlFor="description">Description</label>
+            <textarea 
+                className="w-full px-4 py-2 mt-1 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 border-b-2 border-black transition duration-300"    
+                id="description" rows="4" required />
           </div>
-          <p className="text-danger">{error && error}</p>
-          <button type="submit" className="btn btn-block text-center fw-bold" style={{ backgroundColor: '#b100cd', color: 'white', borderRadius: '10px' }}>
-            Submit
-          </button>
+          <p className="text-red-500 mt-2">{error && error}</p>
+            <div className="flex justify-center">
+            <button
+              type="submit"
+              className="px-6 py-2 mt-5 bg-purple-600 text-white font-bold rounded-lg hover:bg-purple-700 transition duration-300"> 
+              Submit
+            </button></div> 
         </form>
       </div>
     </div>

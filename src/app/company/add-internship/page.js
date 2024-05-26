@@ -2,7 +2,6 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
-import DatePicker from "react-datepicker";
 
 function AddInternship() {
     const [error, setError] = useState(""); 
@@ -113,11 +112,11 @@ function AddInternship() {
         <div className="mb-3">
         <div > 
         <label className="fw-bold">Date</label> <br/>
-        <DatePicker 
+        {/* <DatePicker 
           selected={end_date} 
           onChange={(date) => setEndDate(date)}
           className="form-control rounded bg-light"
-        />
+        /> */}
         </div>
         </div>
           <div className="mb-3 form-outline">

@@ -64,48 +64,46 @@ if (sessionStatus === "loading") {
 }
     return (
         sessionStatus !== "authenticated" && (
-          <div class="container mt-5">
-          <div class="row justify-content-center">
-              <div class="col-md-6">
-              <form onSubmit={handleSubmit} class="bg-light p-4 rounded shadow">
-                <h1 className="text-center fw-bold mt-3">Create Account</h1>
-                <div class="mb-3 mt-3 ">
-                  <label className='fw-bold '>Company Name</label>
-                  <input type="text" class="form-control mt-3 " id="floatingName" placeholder="Company Name"
-                   style={{ backgroundColor: '#f0f0f0' , borderRadius: '10px'}}/>
+          <div className="flex items-center justify-center min-h-screen bg-gray-100">
+          <div className="w-full max-w-md">
+            <form onSubmit={handleSubmit} className="bg-white p-8 rounded-lg shadow-lg">
+              <h1 className="text-2xl font-bold text-center">Create Account</h1>
+              <div className="space-y-4 mt-6">
+                  <label className='font-bold '>Company Name</label>
+                  <input type="text"
+                    className="w-full px-4 py-2 mt-1 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"                   id="floatingName" placeholder="Company Name"
+                   />
                 </div>
                 <div class="mb-3">
-                  <label className="fw-bold">Email</label>
+                  <label className="font-bold">Email</label>
                   <input
                     type="email"
-                    className="form-control mt-3 "
-                    id="floatingInput"
+                    className="w-full px-4 py-2 mt-1 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"                    id="floatingInput"
                     placeholder="name@example.com"
                     required
-                    style={{ backgroundColor: '#f0f0f0' , borderRadius: '10px'}}
                   />
                 </div>
                 <div className="form-group mt-3">
-                  <label className="fw-bold">Password</label>
+                  <label className="font-bold">Password</label>
                   <input
                     type="password"
-                    className="form-control mt-3 "
-                    id="floatingPassword"
+                    className="w-full px-4 py-2 mt-1 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"                    id="floatingPassword"
                     placeholder="Password"
                     required
-                    style={{ backgroundColor: '#f0f0f0' , borderRadius: '10px'}}
                   />
                 </div>  
-                <p>{error && error}</p>
-                <button type="submit" className="btn btn-block text-center fw-bold" style={{ backgroundColor: '#b100cd', color: 'white', display: 'block', margin: '0 auto' ,  borderRadius: '10px'}}>
-                  Sign Up
-                </button>
-                <div className= "mt-3" style={{ textAlign: 'center' }}>                 
-                  <a href="/companylogin" style={{ display: 'inline-block', marginLeft: '50px' }}>Login with Existing Account</a></div>
+                <p className="text-red-500 mt-2">{error && error}</p>
+            <div className="flex justify-center">
+            <button
+              type="submit"
+              className="px-6 py-2 mt-5 bg-purple-600 text-white font-bold rounded-lg hover:bg-purple-700 transition duration-300"> 
+              Log In
+            </button></div> 
+                <div className= "text-center mt-3">                 
+                  <a href="/companylogin" className="inline-block text-center text-blue-500 underline">Login with Existing Account</a></div>
               </form>
             </div>
           </div>
-      </div>    
     ));
 }
 export default RegisterCompany;

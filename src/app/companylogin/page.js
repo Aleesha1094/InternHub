@@ -58,43 +58,46 @@ function CompanyLogin() {
 
     return (  
         // sessionStatus !== "authenticated" && (   
-          <div className="container mt-5">
-      <form onSubmit={handleSubmit} style={{ maxWidth: '500px', margin: '0 auto' }} className="bg-light p-4 rounded shadow">
-        <h1 className=" fw-bold mt-5">Welcome Back :) </h1>
-        <p  style={{ color: ' #696969' }}>To keep connected with us please login with your personal information by email address and password.</p>
+          <div className="flex items-center justify-center min-h-screen bg-gray-100">
+          <form 
+            onSubmit={handleSubmit} 
+            className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full space-y-6"
+          >
+            <h1 className="text-3xl font-bold">Welcome Back :)</h1>
+        <p className="text-gray-600">To keep connected with us please login with your personal information by email address and password.</p>
         <div className="mb-3 mt-3 ">
-          <label className="fw-bold">Email</label>
+          <label className="font-bold">Email</label>
           <input
             type="email"
-            className="form-control"
+            className="w-full px-4 py-2 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"       
             id="floatingInput"
             placeholder="name@example.com"
             required
-            style={{ backgroundColor: '#f0f0f0', borderRadius: '10px' }}
           />
         </div>
         <div className="mb-3">
-          <label className="fw-bold">Password</label>
+          <label className="font-bold">Password</label>
           <input
             type="password"
-            className="form-control"
+            className="w-full px-4 py-2 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"       
             id="floatingPassword"
             placeholder="Password"
             required
-            style={{ backgroundColor: '#f0f0f0', borderRadius: '10px' }}
           />
         </div>
-        <p style={{ color: 'red', fontSize: '14px' }}>{error && error}</p>
-        <button type="submit" className="btn btn-block text-center fw-bold" style={{ backgroundColor: '#b100cd', color: 'white', display: 'block', margin: '0 auto', borderRadius: '10px' }}>
-          Log In
-        </button>   
-        <div className="text-center fw-bold mt-3">OR</div>
-        <div  className= "mt-3" style={{ textAlign: 'center' }}>
-          <a href="/forgetpassword" style={{ display: 'inline-block', marginLeft: '50px' }}>I've lost my password</a>
+        <p className="text-red-500 mt-2">{error && error}</p>
+            <div className="flex justify-center">
+            <button
+              type="submit"
+              className="px-6 py-2 mt-5 bg-purple-600 text-white font-bold rounded-lg hover:bg-purple-700 transition duration-300"> 
+              Log In
+            </button></div> 
+        <div className= "text-center mt-3">
+          <a href="/forgetpassword" className="inline-block text-center text-blue-500 underline">I've lost my password</a>
         </div> 
       </form>
       <div className="pb-5"></div>
-    </div>      
+    </div> 
   )
 // );
 }

@@ -12,7 +12,7 @@ const CompanySchema = mongoose.Schema({
         required: true,
         minlength: [8, 'Password must be at least 8 characters long!'],
     },
-    company_name : {
+    username : {
         type: String,
         required: true
     },

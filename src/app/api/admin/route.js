@@ -5,14 +5,14 @@ import bcrypt from "bcryptjs";
 
 export async function POST(request) {
   try {
-    const { name, email, password } = await request.json();
+    const { username, email, password } = await request.json();
     await connectDb();
   
     const hashedPassword = await bcrypt.hash(password, 5);
     const newAdmin = new Admin({
       email,
       password: hashedPassword,
-      name,
+      username,
     });
     await newAdmin.save();
 

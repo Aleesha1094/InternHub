@@ -5,8 +5,8 @@ function Footer() {
         title: 'Useful Link',
         sub: [
             { subheading: 'About Intern Hub' },
-            { subheading: 'Contact' },
-            { subheading: 'Help Centre' },
+            { subheading: 'Contact Us' },
+            // { subheading: 'Help Centre' },
             { subheading: 'Privacy Policy' },
         ]
     }
@@ -24,7 +24,7 @@ function Footer() {
     }
     return (
         <div>
-            <div className='bg-[#F3F4FD] md:px-32 flex justify-center md:space-x-60 space-x-20 py-14'>
+            <div className='bg-purple-50 md:px-32 flex justify-center md:space-x-60 space-x-20 py-14'>
                 <div className='space-y-3'>
                     <p className='text-[20px] text-[#333] font-poppins font-semibold'>{Links.title}</p>
                     {

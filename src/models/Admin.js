@@ -13,7 +13,7 @@ const AdminSchema = mongoose.Schema({
         required: true,
         minlength: [8, 'Password must be at least 8 characters long!'],
     },
-    name : {
+    username : {
         type: String,
         required: true,
     },

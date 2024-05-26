@@ -9,7 +9,7 @@ const InternshipSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    city : {
+    location : {
         type: String,
         required: false
     },
@@ -17,9 +17,13 @@ const InternshipSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    eligibilityCriteria : {
+    duartion : {
         type: String,
         required: false
+    },
+    eligibilityCriteria : {
+        type: String,
+        required: true
     },
     url : {
         type: String,
