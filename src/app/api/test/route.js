@@ -1,5 +1,5 @@
-import Internship_Test from "../../../../Models/Internship_Test";
-import connectDb from "../../../../middleware/dbConnection";
+import Internship_Test from "@/models/Internship_Test";
+import connectDb from "@/utils/dbConnection";
 import { NextResponse } from "next/server";
 
 // export async function POST(request) {

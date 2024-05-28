@@ -11,7 +11,7 @@ export async function SBP(page) {
             const duration = Array.from(paragraphs).pop().textContent.trim(); // Extract last paragraph for deadline
 
             return {
-                company_title: "State Bank of Pakistan (SBP)",
+                company_title: "State Bank of Pakistan",
                 title: "Bank Internship",
                 url: window.location.href,
                 // description: paragraphs[0].textContent.trim(),

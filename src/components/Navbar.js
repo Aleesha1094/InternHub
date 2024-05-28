@@ -1,9 +1,10 @@
 "use client"
-import React from 'react'
-import Navpic from './../../public/Navpic.png'
+import React, {useState} from 'react'
+import Navpic from './../../public/Logo-removebg.png'
 import Image from 'next/image'
 import Link from 'next/link'
-import { signOut, useSession } from 'next-auth/react';
+import { useSession } from 'next-auth/react';
+import Dropdown from './Dropdown'
 
 function Navbar() {
     const { data: session } = useSession();
@@ -19,44 +20,73 @@ function Navbar() {
       return null;
     };
 
-    return (
-        <nav className="w-full bg-white shadow flex justify-between items-center md:px-32 py-1">
-            <div className='flex items-center border-r border-[#1E1E1E99]'>
-                <Image src={Navpic} alt="" className='w-36'/>
-                {/* <p className='text-[18px] text-[#1E1E1E99] font-poppins font-md mr-4'>Intern Hub</p> */}
-            </div>
-            <div className="container flex items-center justify-center p-6 mx-auto text-purple-600 pr-40 space-x-[40px] sm:flex hidden">
-                <Link href="/" className="text-gray-800 border-b-2 border-purple-500 mx-1.5 sm:mx-6">Home</Link>
-                <Link href="/" className="text-purple-700 border-b-2 border-transparent hover:text-gray-800 hover:border-purple-500 mx-1.5 sm:mx-6">Internships</Link>
-                <Link href="/testportal" className="text-purple-700 border-b-2 border-transparent hover:text-gray-800 hover:border-purple-500 mx-1.5 sm:mx-6">Test Bank</Link>
-                <Link href="/contactus" className="text-purple-700 border-b-2 border-transparent hover:text-gray-800 hover:border-purple-500 mx-1.5 sm:mx-6">Contact Us</Link>
-                <Link href="/aboutus" className="text-purple-700 border-b-2 border-transparent hover:text-gray-800 hover:border-purple-500 mx-1.5 sm:mx-6">About</Link>
+    const [nav , setnav] = useState(false);
 
+    const handlenav = () => {
+        setnav(!nav);
+    }
+    const navbar = [
+      { title: 'Home', url: "/" },
+      { title: 'Internships', url: "/internships"  },
+      { title: 'Contact Us', url: "/contactus"  },
+      { title: 'Internship Test', url: "/testportal"  },
+  ]
+
+  const dropdown1 = [
+    { url: '/register', title: 'Company'},
+    { url: '/adminlogin', title: 'Admin' }
+];
+const dropdown2 = [
+  { signOut: true, title: 'Logout' }
+];
+
+    return (
+        <nav className="w-full bg-white shadow flex justify-between items-center md:px-32 py-3">
+            <div className='flex items-center border-r px-9 border-[#1E1E1E99]'>
+                <Image src={Navpic} alt="" className='w-40 h-20'/>
+            </div>
+            <div className="container flex items-center justify-center p-6 mx-auto text-purple-800 font-bold space-x-[40px] sm:flex hidden">
+                {
+                    navbar.map((nav, index) => (
+                        <Link key={index} className="border-b-2 border-transparent hover:text-black hover:border-purple-800" href={nav.url}>{nav.title}</Link>
+                    ))
+                }
                 {!session ? (
                   <>
-                      <Link href="/register" className="text-purple-700 border-b-2 border-transparent hover:text-gray-800 hover:border-purple-500 mx-1.5 sm:mx-6">Company</Link>
-                      <Link href="/adminlogin" className="text-purple-700 border-b-2 border-transparent hover:text-gray-800 hover:border-purple-500 mx-1.5 sm:mx-6">Admin</Link>
+                  <Dropdown name='Login As' links={dropdown1}/>
                   </>
-                    ) : (
-                    <>
-                    <Link href={GetUserRole()} className="border-b-2 border-transparent hover:text-gray-800 hover:border-purple-500 mx-1.5 sm:mx-6">Profile</Link>
-                    {/* <button id="dropdownHoverButton" data-dropdown-toggle="dropdownHover" data-dropdown-trigger="hover" className="text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center" type="button">{session.user?.email}
-                      <svg className="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
-                      </svg>
-                    </button> */}
-                    {/* <div id="dropdownHover" className="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44"> */}
-                      {/* <ul className="py-2 text-sm text-gray-700" aria-labelledby="dropdownHoverButton"> */}
-                        {/* <li> */}
-                          <button onClick={() => signOut()}>Logout</button>
-                        {/* </li> */}
-                      {/* </ul> */}
-                    {/* </div> */}
-                    </>
-                    )}
+                  ) : (
+                  <>
+                    <Link href={GetUserRole()} className="border-b-2 border-transparent hover:text-black hover:border-purple-800">Profile</Link>
+                    <Dropdown name={session.user?.username} links={dropdown2}/>
+                  </>
+                )}
             </div>
-    </nav>
-    )
-}
+            <div onClick={handlenav} className='sm:hidden z-10'>
+                <p className='mr-4 cursor-pointer'>MENU</p>
+            </div>
 
-export default Navbar
+            <div className={nav ? 'overflow-y-hidden md:hidden ease-in duration-300 absolute text-gray-300 left-0 top-0 w-full h-screen bg-black/90 px-4 py-7 flex flex-col' 
+                : 'absolute top-0 h-screen left-[-100%] ease-in duration-500'}>
+                <ul className='h-full w-full text-center pt-12'>
+                    <li className='text-2xl py-8'>
+                        <a href="/">Home</a>
+                    </li>
+                    <li className='text-2xl py-8'>
+                        <a href="">Internship</a>
+                    </li>
+                    <li className='text-2xl py-8'>
+                        <a href="">Admin</a>
+                    </li>
+                    <li className='text-2xl py-8'>
+                        <a href="">Company</a>
+                    </li>
+                    <li className='text-2xl py-8'>
+                        <a href="">Test Bank</a>
+                    </li>
+                </ul>
+            </div>
+          </nav>
+  )}
+
+export default Navbar;

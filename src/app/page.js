@@ -2,7 +2,6 @@
 import Categories from "@/components/Categories";
 import HeroSection from "@/components/HeroSection";
 import React, { useEffect, useState } from "react";
-import Test from "@/components/Test";
 
 export default function Home() {
   // const [error, setError] = useState("");

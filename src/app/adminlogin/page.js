@@ -50,10 +50,10 @@ function AdminLogin() {
 
   return (
     sessionStatus !== "authenticated" && (   
-      <div className="container mt-5 mb-5">
-      <div className="flex justify-center">
-      <div className="w-full max-w-md bg-white p-6 rounded-lg shadow-md">
-          <h1 className="text-3xl font-bold text-center mt-5">Login Account</h1>
+      <div className="flex items-center justify-center min-h-screen">
+      <div className="flex justify-center w-full">
+      <div className="w-full max-w-md bg-white p-6 drop-shadow-[0_0px_350px_rgba(0,0,0,0.23)] rounded-md">
+          <h1 className="text-3xl font-bold text-center mx-7">Login Account</h1>
           <form onSubmit={handleSubmit}>
             <div className="mt-5">
              <label className="block font-bold mb-2">Email</label>
@@ -77,7 +77,7 @@ function AdminLogin() {
             <div className="flex justify-center">
             <button
               type="submit"
-              className="px-6 py-2 mt-5 bg-purple-600 text-white font-bold rounded-lg hover:bg-purple-700 transition duration-300"> 
+              className="px-6 py-2 mt-5 bg-purple-600 text-white font-bold rounded-lg hover:bg-purple-700 transition duration-300 hover:shadow-lg"> 
               Log In
             </button>
             </div>
