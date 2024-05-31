@@ -8,11 +8,6 @@ function UpdateInternship({ internship }) {
     const router = useRouter();
     const { data: session, status: sessionStatus } = useSession();
 
-    const isValidEmail = (contact_email) => {
-        const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
-        return emailRegex.test(contact_email);
-    };
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         const title = e.target[0].value;
@@ -22,11 +17,6 @@ function UpdateInternship({ internship }) {
         const company_title = e.target[1].value;
         const duration = e.target[5].value;
         const eligibilityCriteria = e.target[3].value;
-              
-        if (!isValidEmail(contact_email)) {
-          setError("Email is invalid!");
-          return;
-        }
       
         try {
           const res = await fetch(`/api/internships/${internship.id}`, { 
@@ -53,7 +43,7 @@ function UpdateInternship({ internship }) {
           }
         } catch (error) {
           setError("Error, Try Again!");
-          console.log(error);
+          console.error(error);
         }
       };
 
@@ -72,14 +62,14 @@ function UpdateInternship({ internship }) {
             className="w-full px-4 py-2 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:shadow-md"
             id="floatingInput"
             placeholder="Title"
-            // defaultValue={internship.title} 
+            // defaultValue={internship.title || ""}
             required
           />
         </div>
         <div className="mb-4">
-          <label className="font-bold block mb-2 p-1">Email</label>
+          <label className="font-bold block mb-2 p-1">Company Title</label>
           <input
-            type="email"
+            type="company_title"
             className="w-full px-4 py-2 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:shadow-md"
             id="floatingInput"
             placeholder="Email through which students can contact you"
@@ -101,7 +91,7 @@ function UpdateInternship({ internship }) {
         <div className="mb-4">
           <label className="font-bold block mb-2 p-1">Eligibility Criteria</label>
           <input
-            type="criteria"
+            type="eligibilityCriteria"
             className="form-control w-full px-4 py-2 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:shadow-md"
             id="floatingInput"
             placeholder="Eligibility Criteria for Internship"

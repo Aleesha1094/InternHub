@@ -22,7 +22,7 @@ const handleSubmit = async (e) => {
   e.preventDefault();
   const email = e.target[1].value;
   const password = e.target[2].value;
-  const company_name = e.target[0].value;
+  const username = e.target[0].value;
 
   if (!isValidEmail(email)) {
     setError("Email is Invalid!");
@@ -43,7 +43,7 @@ const handleSubmit = async (e) => {
       body: JSON.stringify({
         email,
         password,
-        company_name,
+        username,
       }),
     });
     if (res.status === 400) {
@@ -66,7 +66,7 @@ if (sessionStatus === "loading") {
         sessionStatus !== "authenticated" && (
           <div className="flex items-center justify-center min-h-screen bg-gray-100">
           <div className="w-full max-w-md">
-            <form onSubmit={handleSubmit} className="bg-white p-8 rounded-lg shadow-lg">
+            <form onSubmit={handleSubmit} className="bg-white p-8 rounded-lg shadow-lg space-y-5">
               <h1 className="text-2xl font-bold text-center">Create Account</h1>
               <div className="space-y-4 mt-6">
                   <label className='font-bold '>Company Name</label>

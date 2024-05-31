@@ -15,7 +15,7 @@ function HeroSection() {
                 <p className='md:mt-2 mt-4'>Have any Question? <Link className='text-purple-500 underline' href="/contactus">Get Free Help</Link></p>
             </div>
 
-            <div className='md:pl-10 md:mt-16' data-aos="slide-down">
+            <div className='md:pl-10 md:mt-16' data-aos="slide-left">
                 <Image src={Banner} alt="" />
             </div>
         </div>

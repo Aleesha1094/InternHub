@@ -105,7 +105,7 @@ const TestPortal = () => {
   };
 
   return (
-    <div className="container mx-auto p-9 bg-gray-100 font-sans" data-aos="fade-up">
+    <div className="container mx-auto p-9 bg-gray-100 font-sans">
       <h1 className="text-center text-5xl my-7 font-bold cursor-default">Let's Start Quiz</h1>
       {/* <div className="form-group"> */}
         {/* <h2 className="text-2xl text-center font-semibold cursor-default">Select Topic:</h2> */}

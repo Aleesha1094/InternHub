@@ -1,5 +1,5 @@
 "use client"
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 
@@ -7,8 +7,6 @@ function UpdateInternship({ internship }) {
     const [error, setError] = useState(""); 
     const router = useRouter();
     const { data: session, status: sessionStatus } = useSession();
-    const [end_date, setEndDate] = useState('');
-
     const companyId = session.user.id;
 
     const isValidEmail = (contact_email) => {
@@ -19,11 +17,12 @@ function UpdateInternship({ internship }) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const title = e.target[0].value;
-        const city = e.target[2].value;
-        const description = e.target[5].value;
-        const c_url = e.target[3].value;
+        const location = e.target[2].value;
+        const description = e.target[6].value;
+        const c_url = e.target[4].value;
         const contact_email = e.target[1].value;
-        const end_date = e.target[4].value;
+        const duration = e.target[5].value;
+        const eligibilityCriteria = e.target[3].value;
       
         if (!isValidEmail(contact_email)) {
           setError("Email is invalid!");
@@ -39,11 +38,12 @@ function UpdateInternship({ internship }) {
             body: JSON.stringify({
                 companyId,
                 title,
-                city,
+                location,
                 description,
+                eligibilityCriteria,
                 c_url,
                 contact_email,
-                end_date
+                duration
             }),
           });
           if (res.status === 500) {
@@ -62,87 +62,93 @@ function UpdateInternship({ internship }) {
         }
       };
 
-      // if (sessionStatus === "loading") {
-      //   return <h1>Loading...</h1>;
-      // }
+      if (sessionStatus === "loading") {
+        return <h1>Loading...</h1>;
+      }
 
     return (  
-      <div className="container mt-5 mb-5">
-      <h1 className="text-center fw-bold mt-5">Update Internship</h1>
-      <form onSubmit={handleSubmit} style={{ maxWidth: '500px', margin: '0 auto' }} className="bg-light p-4 rounded shadow">
-        <div className="mb-3 mt-3 ">
-          <label className="fw-bold">Internship Title</label>
+      <div className="container mx-auto mt-10 mb-10">
+      <h1 className="text-4xl text-center font-extrabold mb-6 text-purple-800">Update Internship</h1>
+      <form onSubmit={handleSubmit} className="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-lg space-y-6">
+        <div className="mb-3 mt-3">
+          <label className="font-bold mb-2 p-1">Internship Title</label>
           <input
             type="title"
-            className="form-control"
+            className="w-full px-4 py-2 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:shadow-md hover:bg-purple-100"
             id="floatingInput"
             placeholder="Title"
             // defaultValue={internship.title} 
             required
-            style={{ backgroundColor: '#f0f0f0', borderRadius: '10px' }}
           />
         </div>
-        <div className="form-group mt-3">
-             <label className="fw-bold">Email</label>
-              <input
-                type="email"
-                className="form-control"
-                id="floatingInput"
-                placeholder="Email through student can contact you"
-                // defaultValue={internship.contact_email} 
-                required
-                style={{ backgroundColor: '#f0f0f0' , borderRadius: '10px'}}
-              />
-            </div>
-        <div className="mb-3">
-          <label className="fw-bold">City</label>
+        <div className="mb-4">
+          <label className="font-bold block mb-2 p-1">Email</label>
           <input
-            type="city"
-            className="form-control"
+            type="email"
+            className="w-full px-4 py-2 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:shadow-md focus:bg-purple-100"
             id="floatingInput"
-            placeholder="City"
+            placeholder="Email through which students can contact you"
+            // defaultValue={internship.contact_email} 
+            required
+          />
+        </div>
+        <div className="mb-4">
+          <label className="font-bold block mb-2 p-1">Location</label>
+          <input
+            type="location"
+            className="w-full px-4 py-2 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:shadow-md focus:bg-purple-100"
+            id="floatingInput"
+            placeholder="Location"
             // defaultValue={internship.city} 
             required
-            style={{ backgroundColor: '#f0f0f0', borderRadius: '10px' }}
           />
         </div>
-        <div className="mb-3">
-          <label className="fw-bold">Website URL</label>
+        <div className="mb-4">
+          <label className="font-bold block mb-2 p-1">Eligibility Criteria</label>
           <input
-            type="url"
-            className="form-control"
+            type="eligibilityCriteria"
+            className="form-control w-full px-4 py-2 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:shadow-md focus:bg-purple-100"
             id="floatingInput"
-            placeholder="Your website URL(optional)"
-            // defaultValue={internship.c_url} 
-            style={{ backgroundColor: '#f0f0f0', borderRadius: '10px' }}
+            placeholder="Eligibility Criteria for Internship"
+            required
           />
         </div>
-        <div className="mb-3">
-        <div > 
-        <label className="fw-bold">Date</label> <br/>
-        {/* <DatePicker 
-          selected={end_date} 
-          onChange={(date) => setEndDate(date)}
-          className="form-control rounded bg-light"
-        /> */}
+        <div className="mb-4">
+          <label className="font-bold block mb-2 p-1">Website URL</label>
+          <input
+            type="c_url"
+            className="w-full px-4 py-2 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:shadow-md focus:bg-purple-100"
+            id="floatingInput"
+            placeholder="Your website URL"
+            // defaultValue={internship.c_url} 
+          />
         </div>
+        <div className="mb-4">
+          <label className="font-bold mb-2 p-1">Duration</label>
+          <input
+            type="duration"
+            className="form-control w-full px-4 py-2 bg-gray-100 rounded-lg focus:outline-none focus:shadow-md focus:ring-2 focus:ring-purple-500 focus:bg-purple-100"
+            id="floatingInput"
+            placeholder="Internship Duration"
+          />
         </div>
-          <div className="mb-3 form-outline">
-          <label class="form-label"className="fw-bold" for="description">Description</label>
-          <textarea  class="form-control" id="description" rows="4"  style={{ backgroundColor: '#f0f0f0', borderRadius: '10px' }}></textarea>
-          
+        <div className="mb-4">
+          <label className="font-bold block mb-2 p-1" htmlFor="description">Description</label>
+          <textarea 
+            className="w-full px-4 py-2 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:bg-purple-100"
+            id="description" rows="4" placeholder="Give a description of the internship"
+            // defaultValue={internship.description}
+          ></textarea>
         </div>
-        <p style={{ color: 'red', fontSize: '14px' }}>{error && error}</p>
-        <button type="submit" className="btn btn-block text-center fw-bold" style={{ backgroundColor: '#b100cd', color: 'white', display: 'block', margin: '0 auto', borderRadius: '10px' }}>
+        <p className="text-red-500 text-sm">{error && error}</p>
+        <div className="flex items-center justify-center">
+        <button type="submit" className="py-2 px-8 bg-purple-600 text-white font-bold rounded-lg hover:bg-purple-700 hover:shadow-lg hover:scale-105">
           Update
-        </button>
-          <div  className= "mt-3" style={{ textAlign: 'center' }}>
-      </div> 
+        </button></div>
       </form>
       <div className="pb-5"></div>
-      </div>  
+    </div>
     );
   }
   
 export default UpdateInternship;
-

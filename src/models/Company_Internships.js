@@ -10,7 +10,7 @@ const CInternshipSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    city : {
+    location : {
         type: String,
         required: true
     },
@@ -33,7 +33,7 @@ const CInternshipSchema = mongoose.Schema({
         match: [/^\S+@\S+\.\S+$/, 'Please enter a valid email address!'],
     },
     duration : {
-        type: Date,
+        type: String,
         required: true
     },
 }, {timestamps: true});

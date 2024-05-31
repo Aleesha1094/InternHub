@@ -17,9 +17,9 @@ const InternshipSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    duartion : {
+    duration : {
         type: String,
-        required: false
+        required: true
     },
     eligibilityCriteria : {
         type: String,
@@ -27,7 +27,7 @@ const InternshipSchema = mongoose.Schema({
     },
     url : {
         type: String,
-        required: true
+        required: false
     },
 }, {timestamps: true});
 

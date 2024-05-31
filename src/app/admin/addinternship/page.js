@@ -34,8 +34,10 @@ function AddInternship() {
                 company_title,
             }),
           });
+          console.log(res.body)
           if (res.status === 500) {
             setError(res.error);
+            console.log("Error: " + res.error)
           }
           if (res.status === 201) {
             setError(res.message);
@@ -101,7 +103,7 @@ function AddInternship() {
             type="url"
             className="form-control w-full px-4 py-2 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:shadow-md"
             id="floatingInput"
-            placeholder="Company Website URL(optional)"
+            placeholder="Company Website URL"
           />
         </div>
         <div className="mb-4">
@@ -119,13 +121,14 @@ function AddInternship() {
             className="form-control w-full px-4 py-2 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
             id="description" rows="4" placeholder="Gave Description of Internship"></textarea>
         </div>
-        <p className="text-red-500 text-sm">{error && error}</p>
+        <p className="text-red-500 text-base">{error && error}</p>
         <button type="submit" className="py-2 px-4 bg-purple-600 text-white font-bold rounded-lg hover:bg-purple-700 transition duration-300">
             Submit
           </button>         
     <div className= "mt-3 text-center">
       </div> 
       </form>
+      {/* <p className="text-red-900 font-bold">{error && error}</p> */}
       <div className="pb-5"></div>
       </div>  
     );

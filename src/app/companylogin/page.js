@@ -8,11 +8,11 @@ function CompanyLogin() {
     const router = useRouter();
     const { data: session, status: sessionStatus } = useSession();
 
-    // useEffect(() => {
-    // if (session?.status === "authenticated") {
-    //     router.replace('/company')
-    // }
-    // }, [session, router]);
+    useEffect(() => {
+    if (session?.status === "authenticated") {
+        router.replace('/company')
+    }
+    }, [session, router]);
 
     const isValidEmail = (email) => {
     const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
@@ -23,7 +23,6 @@ function CompanyLogin() {
     e.preventDefault();
     const email = e.target[0].value;
     const password = e.target[1].value;
-    console.log(email, password);
 
     if (!isValidEmail(email)) {
         setError("Email is invalid!");
@@ -57,7 +56,7 @@ function CompanyLogin() {
     }
 
     return (  
-        // sessionStatus !== "authenticated" && (   
+        sessionStatus !== "authenticated" && (   
           <div className="flex items-center justify-center min-h-screen bg-gray-100">
           <form 
             onSubmit={handleSubmit} 
@@ -65,7 +64,7 @@ function CompanyLogin() {
           >
             <h1 className="text-3xl font-bold">Welcome Back :)</h1>
         <p className="text-gray-600">To keep connected with us please login with your personal information by email address and password.</p>
-        <div className="mb-3 mt-3 ">
+        <div className="mb-3 mt-3">
           <label className="font-bold">Email</label>
           <input
             type="email"
@@ -99,7 +98,7 @@ function CompanyLogin() {
       <div className="pb-5"></div>
     </div> 
   )
-// );
+);
 }
   
 export default CompanyLogin;
