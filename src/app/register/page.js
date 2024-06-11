@@ -2,6 +2,7 @@
 import React,{ useState, useEffect } from 'react';
 import { useRouter } from "next/navigation";
 import { signIn, useSession } from "next-auth/react";
+import Link from 'next/link';
 
 function RegisterCompany() {
 const [error, setError] = useState("");
@@ -60,12 +61,12 @@ const handleSubmit = async (e) => {
 };
 
 if (sessionStatus === "loading") {
-  return <h1>Loading...</h1>;
+  return <h1 className="text-gray-700 font-bold text-center m-9 text-4xl">Loading...</h1>;
 }
     return (
         sessionStatus !== "authenticated" && (
           <div className="flex items-center justify-center min-h-screen bg-gray-100">
-          <div className="w-full max-w-md">
+          <div className="w-full max-w-lg m-9">
             <form onSubmit={handleSubmit} className="bg-white p-8 rounded-lg shadow-lg space-y-5">
               <h1 className="text-2xl font-bold text-center">Create Account</h1>
               <div className="space-y-4 mt-6">
@@ -92,18 +93,20 @@ if (sessionStatus === "loading") {
                     required
                   />
                 </div>  
-                <p className="text-red-500 mt-2">{error && error}</p>
-            <div className="flex justify-center">
-            <button
-              type="submit"
-              className="px-6 py-2 mt-5 bg-purple-600 text-white font-bold rounded-lg hover:bg-purple-700 transition duration-300"> 
-              Log In
-            </button></div> 
-                <div className= "text-center mt-3">                 
-                  <a href="/companylogin" className="inline-block text-center text-blue-500 underline">Login with Existing Account</a></div>
-              </form>
-            </div>
+              {error && <p className="text-center text-red-500 mt-4">{error}</p>}
+              <div className="flex justify-center">
+                <button
+                  type="submit"
+                  className="px-6 py-2 mt-5 bg-purple-600 text-white font-bold rounded-lg hover:bg-purple-700 transition duration-300 hover:scale-110"> 
+                  Log In
+                </button>
+              </div> 
+              <div className= "text-center mt-3">                 
+                <Link href="/companylogin" className="inline-block text-center text-blue-500 underline">Login with Existing Account</Link>
+              </div>
+            </form>
           </div>
+        </div>
     ));
 }
 export default RegisterCompany;

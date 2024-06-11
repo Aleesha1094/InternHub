@@ -1,24 +1,22 @@
 "use client"
 import React, { useState } from 'react';
 
-const Privacypolicy = () => {
-  const [expandedSection, setExpandedSection] = useState(null);
+function Privacypolicy(){
 
+  const [expandedSection, setExpandedSection] = useState(null);
   const toggleSection = (section) => {
     setExpandedSection(expandedSection === section ? null : section);
   };
 
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-3xl font-bold text-purple-800">Privacy Policy for Futureinterns.pk</h1>
-      <p className="mt-4">
-        
-Certainly, here's the text with the provided changes:
-
-At Futureinterns.pk, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by Pakistan's Virtual Internship Platform and how we use it. If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us. This Privacy Policy applies only to our online activities and is valid for visitors to our website with regards to the information that they share and collect at Futureinterns.pk. This policy is not applicable to any information collected offline or via channels other than this website.
+    <div className="container mx-auto p-4 m-9">
+      <h1 className="text-4xl text-center font-bold text-purple-800">Privacy Policy for Future Interns</h1>
+      <div className='m-10'>
+      <p className="mt-4 text-justify"> 
+        Certainly, here's the text with the provided changes:
+        At Futureinterns.pk, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by Pakistan's Virtual Internship Platform and how we use it. If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us. This Privacy Policy applies only to our online activities and is valid for visitors to our website with regards to the information that they share and collect at Futureinterns.pk. This policy is not applicable to any information collected offline or via channels other than this website.
       </p>
-      
-      <h2 className="text-2xl font-bold mt-6">Consent</h2>
+      <h2 className="text-3xl font-bold mt-6">Consent</h2>
       <p className="mt-2">
         By using our website, you hereby consent to our Privacy Policy and agree to its terms:
       </p>
@@ -48,10 +46,11 @@ At Futureinterns.pk, one of our main priorities is the privacy of our visitors. 
               </svg>
             </div>
             {expandedSection === index && (
-              <p className="mt-2">{section.detail}</p>
+              <p className="mt-2 pl-5">{section.detail}</p>
             )}
           </div>
         ))}
+      </div>
       </div>
     </div>
   );

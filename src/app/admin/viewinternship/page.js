@@ -112,7 +112,7 @@ function InternshipData() {
             ))}
           </ul>
         ) : (
-          <p className="text-center text-2xl text-gray-600">Loading...</p>
+          <p className="text-gray-700 font-bold text-center m-9 text-3xl">Loading...</p>
         )}
         {error && <p className="text-center text-red-500 mt-4">{error}</p>}
       </div>

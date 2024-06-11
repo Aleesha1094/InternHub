@@ -53,7 +53,7 @@ useEffect(() => {
                 <li className="mb-2">
                   <h4 className="flex items-center justify-center text-2xl font-bold text-purple-700 cursor-default">{internship.company_title}</h4>
                 </li>
-                <div className="space-y-4 cursor-default">
+                <div className="space-y-2 cursor-default">
                 <p><span className="font-bold">Title :</span> {internship.title}</p>
                 <p><span className="font-bold">Location :</span> {internship.location}</p>
                 <p><span className="font-bold">Eligibility Criteria :</span> {internship.eligibilityCriteria}</p>
@@ -66,15 +66,15 @@ useEffect(() => {
                       {internship.c_url}
                     </a>
                   </p>
-                  <div className="flex items-center justify-center space-x-4 pt-9">
+                  <div className="flex items-center justify-center space-x-2 pt-9">
                     <button
                       onClick={() => handleDelete(internship._id)}
-                      className="bg-purple-700 font-semibold text-white py-2 px-4 mr-9 rounded hover:bg-pink-700 hover:shadow-lg hover:scale-105"
+                      className="bg-purple-700 font-semibold text-white py-2 px-4 mr-9 rounded hover:bg-pink-700 hover:shadow-lg hover:scale-110 transition duration-300"
                     >
                       Delete Internship
                     </button>
                     <Link href={`/company/update-internship?id=${internship._id}`} 
-                    className="bg-purple-700 font-semibold no-underline text-white py-2 px-4 rounded hover:bg-pink-700 text-center hover:shadow-lg hover:scale-105">
+                    className="bg-purple-700 font-semibold no-underline text-white py-2 px-4 rounded hover:bg-pink-700 text-center hover:shadow-lg hover:scale-110 transition duration-300">
                         Update Internship                   
                     </Link>
                   </div>
@@ -83,9 +83,9 @@ useEffect(() => {
             ))}
           </ul>
         ) : (
-          <p className="text-center text-2xl text-gray-600">Loading...</p>
+          <p className="text-gray-600 font-bold text-center m-9 text-3xl">Loading...</p>
         )}
-        {error && <p className="text-center text-red-500 mt-4">{error}</p>}
+        {error && <p className="text-center text-red-500 font-bold text-base">{error}</p>}
       </div>
     </div>
   );

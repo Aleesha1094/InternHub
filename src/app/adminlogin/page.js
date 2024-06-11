@@ -44,15 +44,14 @@ function AdminLogin() {
       setError("Invalid email or password");
       if (res?.url) router.replace("/");
     } else {
-      setError("Login Successful!");
+      setError("");
     }
   };
 
   return (
     sessionStatus !== "authenticated" && (   
       <div className="flex items-center justify-center min-h-screen">
-      <div className="flex justify-center w-full">
-      <div className="w-full max-w-md bg-white p-6 drop-shadow-[0_0px_350px_rgba(0,0,0,0.23)] rounded-md">
+      <div className="w-full max-w-lg bg-white p-9 drop-shadow-[0_0px_400px_rgba(0,0,0.20,0.23)] rounded-md">
           <h1 className="text-3xl font-bold text-center mx-7">Login Account</h1>
           <form onSubmit={handleSubmit}>
             <div className="mt-5">
@@ -73,17 +72,16 @@ function AdminLogin() {
                 required
               />
             </div>
-            <p className="text-red-500 mt-2">{error && error}</p>
+            {error && <p className="text-center text-red-500 mt-4">{error}</p>}
             <div className="flex justify-center">
-            <button
-              type="submit"
-              className="px-6 py-2 mt-5 bg-purple-600 text-white font-bold rounded-lg hover:bg-purple-700 transition duration-300 hover:shadow-lg"> 
-              Log In
-            </button>
+              <button
+                type="submit"
+                className="px-6 py-2 mt-5 bg-purple-600 text-white font-bold rounded-lg hover:bg-purple-700 transition duration-300 hover:scale-110 hover:shadow-lg"> 
+                Log In
+              </button>
             </div>
           </form>
         </div>
-      </div>
     </div>
   ));
 }

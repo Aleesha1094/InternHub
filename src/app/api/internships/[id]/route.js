@@ -8,7 +8,7 @@ export async function PUT(request, { params }) {
       const { Company_title: company_title, Title: title, Location: location, Description: description, Url: url, Duration: duration, EligibilityCriteria: eligibilityCriteria } = await request.json();
       await connectDb();
       const updatedInternships = await Internships.findByIdAndUpdate(id, {  company_title, title, location, description, duration, url, eligibilityCriteria }, { new: true });
-      return NextResponse.json({ message: "Internship Updated!", updatedInternships }, { status: 200 });
+      return NextResponse.json({ message: "Internship Updated Sucessfully", updatedInternships }, { status: 200 });
     } catch (error) {
       console.error("Error Updating Internship:", error);
       return NextResponse.json({ error: "Error Updating Internship!" }, { status: 500 });

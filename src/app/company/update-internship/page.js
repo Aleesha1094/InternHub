@@ -1,7 +1,6 @@
 "use client"
 import { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useSession } from "next-auth/react";
 
 function UpdateInternship() {
   const [internship, setInternship] = useState(null);
@@ -9,26 +8,26 @@ function UpdateInternship() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const id = searchParams.get('id');
-  const { data: session, status: sessionStatus } = useSession();
 
   useEffect(() => {
-      const fetchInternship = async () => {
-          try {
-              const res = await fetch(`/api/cinternships/${id}`);
-              const data = await res.json();
-              setInternship(data.Company_Internshipss);
+    const fetchInternship = async () => {
+        try {
+            const res = await fetch(`/api/cinternships/${id}`);
+            const data = await res.json();
+            setInternship(data.Company_Internshipss);
+            console.log(data.Company_Internshipss);
           } catch (error) {
-              console.error("Error fetching internship data:", error);
-              setError("Error fetching internship data!");
-          }
-      };
-      if (!id) {
+            console.error("Error fetching internship data:", error);
+            setError("Error fetching internship data!");
+        }
+    };
+    if (!id) {
         router.push("/company/view-Internship");
-      }
-      if(id){
-          fetchInternship();
-      }
-  }, [id]);
+    }
+    if (id) {
+        fetchInternship();
+    }
+}, [id]);
 
     const isValidEmail = (contact_email) => {
         const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
@@ -82,10 +81,6 @@ function UpdateInternship() {
         }
       };
 
-      if (sessionStatus === "loading") {
-        return <h1 className="text-gray-700 font-bold text-center m-9 text-2xl">Loading...</h1>;
-      }
-
     return (  
       <div className="container mx-auto mt-10 mb-10">
       <h1 className="text-4xl text-center font-extrabold mb-6 text-purple-800">Update Internship</h1>
@@ -97,7 +92,7 @@ function UpdateInternship() {
             className="w-full px-4 py-2 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:shadow-md hover:bg-purple-100"
             id="floatingInput"
             placeholder="Title"
-            defaultValue={internship.title || ""} 
+            // defaultValue={internship.title || ""}
             required
           />
         </div>
@@ -108,7 +103,7 @@ function UpdateInternship() {
             className="w-full px-4 py-2 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:shadow-md focus:bg-purple-100"
             id="floatingInput"
             placeholder="Email through which students can contact you"
-            defaultValue={internship.contact_email || ""} 
+            // defaultValue={internship.contact_email || ""} 
             required
           />
         </div>
@@ -119,7 +114,7 @@ function UpdateInternship() {
             className="w-full px-4 py-2 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:shadow-md focus:bg-purple-100"
             id="floatingInput"
             placeholder="Location"
-            defaultValue={internship.location || ""} 
+            // defaultValue={internship.location || ""} 
             required
           />
         </div>
@@ -129,7 +124,7 @@ function UpdateInternship() {
             type="eligibilityCriteria"
             className="form-control w-full px-4 py-2 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:shadow-md focus:bg-purple-100"
             id="floatingInput"
-            defaultValue={internship.eligibilityCriteria || ""}
+            // defaultValue={internship.eligibilityCriteria || ""}
             placeholder="Eligibility Criteria for Internship"
             required
           />
@@ -141,7 +136,7 @@ function UpdateInternship() {
             className="w-full px-4 py-2 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:shadow-md focus:bg-purple-100"
             id="floatingInput"
             placeholder="Your website URL"
-            defaultValue={internship.c_url || ""} 
+            // defaultValue={internship.c_url || ""} 
           />
         </div>
         <div className="mb-4">
@@ -150,7 +145,7 @@ function UpdateInternship() {
             type="duration"
             className="form-control w-full px-4 py-2 bg-gray-100 rounded-lg focus:outline-none focus:shadow-md focus:ring-2 focus:ring-purple-500 focus:bg-purple-100"
             id="floatingInput"
-            defaultValue={internship.duration || ""}
+            // defaultValue={internship.duration || ""}
             placeholder="Internship Duration"
           />
         </div>
@@ -159,7 +154,7 @@ function UpdateInternship() {
           <textarea 
             className="w-full px-4 py-2 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:bg-purple-100"
             id="description" rows="4" placeholder="Give a description of the internship"
-            defaultValue={internship.description || ""}
+            // defaultValue={internship.description || ""}
           ></textarea>
         </div>
         <p className="text-red-500 text-sm">{error && error}</p>

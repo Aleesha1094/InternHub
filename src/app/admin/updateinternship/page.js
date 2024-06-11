@@ -1,7 +1,6 @@
 "use client"
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { useSession } from "next-auth/react";
 import { useSearchParams } from 'next/navigation'
 
 function UpdateInternship() {
@@ -10,7 +9,6 @@ function UpdateInternship() {
     const router = useRouter();
     const searchParams = useSearchParams();
     const id = searchParams.get('id');
-    const { data: session, status: sessionStatus } = useSession();
 
     useEffect(() => {
         const fetchInternship = async () => {
@@ -63,17 +61,15 @@ function UpdateInternship() {
             } else if (res.status === 200) {
                 const successData = await res.json();
                 setError(successData.message);
+                setTimeout(() => {
                 router.push('/admin/viewinternship');
+                }, 1500)  
             }
         } catch (error) {
             setError("Error, Try Again!");
             console.error(error);
         }
     };
-
-    if (sessionStatus === "loading" || !internship) {
-        return <h1 className="text-gray-700 font-bold text-center m-9 text-2xl">Loading...</h1>;
-    }
 
     return (
         <div className="container mx-auto mt-10 mb-10">
@@ -145,10 +141,10 @@ function UpdateInternship() {
                         defaultValue={internship.description || ""}
                     ></textarea>
                 </div>
-                <p className="text-red-500 text-base">{error && error}</p>
+                {error && <p className="text-center text-red-500 font-bold text-base">{error}</p>}
                 <div className="flex items-center justify-center">
                     <button type="submit" className="py-2 px-8 bg-purple-600 text-white font-bold rounded-lg hover:bg-purple-700 transition duration-300">
-                        Update
+                        Update Internship
                     </button>
                 </div>
             </form>

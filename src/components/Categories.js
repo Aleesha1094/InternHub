@@ -38,7 +38,7 @@ function Categories() {
           
             {internships && internships.length > 0 ? (
             <div className='md:px-32 px-20 grid md:grid-cols-3 gap-8'>
-                {internships.slice(0,3).map((internship, index) => (
+              {internships.slice(0,3).map((internship, index) => (
           <div
           key={internship._id}
           className={`p-6 my-5 rounded-lg shadow-xl hover:shadow-2xl transition-shadow duration-300 ${

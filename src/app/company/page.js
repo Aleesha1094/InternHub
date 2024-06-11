@@ -22,7 +22,7 @@ async function CompanyHome(){
             <Link href="/company/view-Internship" className="text-white no-underline text-xl font-bold flex items-center justify-center h-full">View Internship</Link>
           </div>
           <div className="h-48 w-72 bg-[#b7c2c6] border rounded-tr-lg cursor-pointer hover:bg-pink-500 transform hover:scale-105 transition duration-300">
-            <Link href="/company/add-internship" className="text-white text-xl no-underline font-bold flex items-center justify-center h-full">Add Internship</Link>
+            <Link href="/company/addinternship" className="text-white text-xl no-underline font-bold flex items-center justify-center h-full">Add Internship</Link>
           </div>
         </div>
       </div>
