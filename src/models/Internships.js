@@ -27,7 +27,7 @@ const InternshipSchema = mongoose.Schema({
     },
     url : {
         type: String,
-        required: false
+        required: true
     },
 }, {timestamps: true});
 

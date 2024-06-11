@@ -52,7 +52,7 @@ function ContactUs() {
   return (     
     <div className="container my-9 min-h-screen" data-aos="fade-up"  data-aos-easing="ease-out">
     <div className="flex justify-center drop-shadow-[0_0px_300px_rgba(186,85,211,0.23)]" >
-      <div className="w-full max-w-lg p-4">
+      <div className="w-full max-w-xl p-4">
         <form onSubmit={handleSubmit} className="bg-white p-8 rounded-lg shadow-lg">
           <h1 className="text-4xl font-bold text-center my-5" data-aos="fade-up">Let’s Talk</h1>
           <div className="grid grid-cols-1 gap-4 mt-3">

@@ -1,13 +1,34 @@
 "use client"
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useState, useEffect } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useSession } from "next-auth/react";
 
-function UpdateInternship({ internship }) {
-    const [error, setError] = useState(""); 
-    const router = useRouter();
-    const { data: session, status: sessionStatus } = useSession();
-    const companyId = session.user.id;
+function UpdateInternship() {
+  const [internship, setInternship] = useState(null);
+  const [error, setError] = useState(""); 
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const id = searchParams.get('id');
+  const { data: session, status: sessionStatus } = useSession();
+
+  useEffect(() => {
+      const fetchInternship = async () => {
+          try {
+              const res = await fetch(`/api/cinternships/${id}`);
+              const data = await res.json();
+              setInternship(data.Company_Internshipss);
+          } catch (error) {
+              console.error("Error fetching internship data:", error);
+              setError("Error fetching internship data!");
+          }
+      };
+      if (!id) {
+        router.push("/company/view-Internship");
+      }
+      if(id){
+          fetchInternship();
+      }
+  }, [id]);
 
     const isValidEmail = (contact_email) => {
         const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
@@ -16,15 +37,15 @@ function UpdateInternship({ internship }) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const title = e.target[0].value;
-        const location = e.target[2].value;
-        const description = e.target[6].value;
-        const c_url = e.target[4].value;
-        const contact_email = e.target[1].value;
-        const duration = e.target[5].value;
-        const eligibilityCriteria = e.target[3].value;
+        const Title = e.target[0].value;
+        const Location = e.target[2].value;
+        const Description = e.target[6].value;
+        const C_url = e.target[4].value;
+        const Contact_email = e.target[1].value;
+        const Duration = e.target[5].value;
+        const EligibilityCriteria = e.target[3].value;
       
-        if (!isValidEmail(contact_email)) {
+        if (!isValidEmail(Contact_email)) {
           setError("Email is invalid!");
           return;
         }
@@ -36,14 +57,13 @@ function UpdateInternship({ internship }) {
               "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                companyId,
-                title,
-                location,
-                description,
-                eligibilityCriteria,
-                c_url,
-                contact_email,
-                duration
+                Title,
+                Location,
+                Description,
+                EligibilityCriteria,
+                C_url,
+                Contact_email,
+                Duration
             }),
           });
           if (res.status === 500) {
@@ -63,7 +83,7 @@ function UpdateInternship({ internship }) {
       };
 
       if (sessionStatus === "loading") {
-        return <h1>Loading...</h1>;
+        return <h1 className="text-gray-700 font-bold text-center m-9 text-2xl">Loading...</h1>;
       }
 
     return (  
@@ -77,7 +97,7 @@ function UpdateInternship({ internship }) {
             className="w-full px-4 py-2 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:shadow-md hover:bg-purple-100"
             id="floatingInput"
             placeholder="Title"
-            // defaultValue={internship.title} 
+            defaultValue={internship.title || ""} 
             required
           />
         </div>
@@ -88,7 +108,7 @@ function UpdateInternship({ internship }) {
             className="w-full px-4 py-2 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:shadow-md focus:bg-purple-100"
             id="floatingInput"
             placeholder="Email through which students can contact you"
-            // defaultValue={internship.contact_email} 
+            defaultValue={internship.contact_email || ""} 
             required
           />
         </div>
@@ -99,7 +119,7 @@ function UpdateInternship({ internship }) {
             className="w-full px-4 py-2 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:shadow-md focus:bg-purple-100"
             id="floatingInput"
             placeholder="Location"
-            // defaultValue={internship.city} 
+            defaultValue={internship.location || ""} 
             required
           />
         </div>
@@ -109,6 +129,7 @@ function UpdateInternship({ internship }) {
             type="eligibilityCriteria"
             className="form-control w-full px-4 py-2 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:shadow-md focus:bg-purple-100"
             id="floatingInput"
+            defaultValue={internship.eligibilityCriteria || ""}
             placeholder="Eligibility Criteria for Internship"
             required
           />
@@ -120,7 +141,7 @@ function UpdateInternship({ internship }) {
             className="w-full px-4 py-2 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:shadow-md focus:bg-purple-100"
             id="floatingInput"
             placeholder="Your website URL"
-            // defaultValue={internship.c_url} 
+            defaultValue={internship.c_url || ""} 
           />
         </div>
         <div className="mb-4">
@@ -129,6 +150,7 @@ function UpdateInternship({ internship }) {
             type="duration"
             className="form-control w-full px-4 py-2 bg-gray-100 rounded-lg focus:outline-none focus:shadow-md focus:ring-2 focus:ring-purple-500 focus:bg-purple-100"
             id="floatingInput"
+            defaultValue={internship.duration || ""}
             placeholder="Internship Duration"
           />
         </div>
@@ -137,7 +159,7 @@ function UpdateInternship({ internship }) {
           <textarea 
             className="w-full px-4 py-2 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:bg-purple-100"
             id="description" rows="4" placeholder="Give a description of the internship"
-            // defaultValue={internship.description}
+            defaultValue={internship.description || ""}
           ></textarea>
         </div>
         <p className="text-red-500 text-sm">{error && error}</p>

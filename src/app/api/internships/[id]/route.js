@@ -5,9 +5,9 @@ import connectDb from "@/utils/dbConnection";
 export async function PUT(request, { params }) {
     try {
       const { id } = params;
-      const { Company_title: company_title, Title: title, Location: location, Description: description, Url: url, EligibilityCriteria: eligibilityCriteria } = await request.json();
+      const { Company_title: company_title, Title: title, Location: location, Description: description, Url: url, Duration: duration, EligibilityCriteria: eligibilityCriteria } = await request.json();
       await connectDb();
-      const updatedInternships = await Internships.findByIdAndUpdate(id, {  company_title, title, location, description, url, eligibilityCriteria }, { new: true });
+      const updatedInternships = await Internships.findByIdAndUpdate(id, {  company_title, title, location, description, duration, url, eligibilityCriteria }, { new: true });
       return NextResponse.json({ message: "Internship Updated!", updatedInternships }, { status: 200 });
     } catch (error) {
       console.error("Error Updating Internship:", error);
@@ -19,8 +19,8 @@ export async function GET(request, { params }) {
   try {
     const { id } = params;
     await connectDb();
-    const Internshipss = await Internships.findOne({ _id: id });
-    return NextResponse.json({ Internshipss }, { status: 200 });  
+    const internshipss = await Internships.findOne({ _id: id });
+    return NextResponse.json({ internshipss }, { status: 200 });  
 } catch (error) {
     return NextResponse.json({ error: "Error fetching Internship" }, { status: 500 });
   }

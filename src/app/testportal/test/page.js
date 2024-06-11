@@ -1,7 +1,7 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import { webdevelopment, mobileDevelopment, informationSecurity, textileQuestions, bankingQuestions } from './data.js';
-import { useSearchParams } from 'next/navigation'
+import { useSearchParams } from 'next/navigation';
 import Link from 'next/link.js';
 
 const TestPortal = () => {
@@ -15,13 +15,13 @@ const TestPortal = () => {
   });
   const [shuffledQuestions, setShuffledQuestions] = useState([]);
   const [quizStarted, setQuizStarted] = useState(false);
-  // const [error, setError] = useState("");
-  // const [tests, setTests] = useState([]); 
+  const [showWrongAnswers, setShowWrongAnswers] = useState(false);
+  const [selectedAnswers, setSelectedAnswers] = useState([]);
 
-  const searchParams = useSearchParams()
-  const selectedTopic = searchParams.get('selectedTopic')
+  const searchParams = useSearchParams();
+  const selectedTopic = searchParams.get('selectedTopic');
 
- useEffect(() => {
+  useEffect(() => {
     let questions = [];
     switch (selectedTopic) {
       case 'Web Development':
@@ -48,6 +48,8 @@ const TestPortal = () => {
     setActiveQuestion(0);
     setSelectedAnswerIndex(null);
     setShowResult(false);
+    setShowWrongAnswers(false);
+    setSelectedAnswers([]);
     setResult({
       score: 0,
       correctAnswers: 0,
@@ -56,9 +58,9 @@ const TestPortal = () => {
   }, [selectedTopic]);
 
   const nextQuestion = () => {
-    setQuizStarted(true); 
+    setQuizStarted(true);
 
-    const { question, answers, correctAnswer } = shuffledQuestions[activeQuestion];
+    const { answers, correctAnswer } = shuffledQuestions[activeQuestion];
     const isCorrect = answers[selectedAnswerIndex] === correctAnswer;
     setResult((prev) => ({
       score: prev.score + (isCorrect ? 15 : 0),
@@ -66,9 +68,14 @@ const TestPortal = () => {
       wrongAnswers: prev.wrongAnswers + (isCorrect ? 0 : 1),
     }));
 
+    setSelectedAnswers((prev) => [
+      ...prev,
+      { question: shuffledQuestions[activeQuestion].question, selected: selectedAnswerIndex, correct: correctAnswer, answers: answers },
+    ]);
+
     if (activeQuestion !== shuffledQuestions.length - 1) {
       setActiveQuestion((prev) => prev + 1);
-      setSelectedAnswerIndex(null); 
+      setSelectedAnswerIndex(null);
     } else {
       setShowResult(true);
     }
@@ -78,6 +85,8 @@ const TestPortal = () => {
     setActiveQuestion(0);
     setSelectedAnswerIndex(null);
     setShowResult(false);
+    setShowWrongAnswers(false);
+    setSelectedAnswers([]);
     setResult({
       score: 0,
       correctAnswers: 0,
@@ -85,14 +94,12 @@ const TestPortal = () => {
     });
 
     setShuffledQuestions((prevQuestions) => prevQuestions.sort(() => Math.random() - 0.5));
-    setQuizStarted(false); 
+    setQuizStarted(false);
   };
 
-  // const handleTopicChange = (value) => {
-  //   if (!quizStarted) {
-  //     setSelectedTopic(value);
-  //   }
-  // };
+  const showWrongMCQs = () => {
+    setShowWrongAnswers(true);
+  };
 
   if (shuffledQuestions.length === 0 || activeQuestion >= shuffledQuestions.length) {
     return <div className='text-2xl text-center font-bold text-gray-600 py-9'>Loading...</div>;
@@ -107,25 +114,6 @@ const TestPortal = () => {
   return (
     <div className="container mx-auto p-9 bg-gray-100 font-sans">
       <h1 className="text-center text-5xl my-7 font-bold cursor-default">Let's Start Quiz</h1>
-      {/* <div className="form-group"> */}
-        {/* <h2 className="text-2xl text-center font-semibold cursor-default">Select Topic:</h2> */}
-        {/* <div className="flex justify-center flex-wrap gap-4 mt-4">
-          {topics.map((topic) => (
-            <button
-              key={topic.value}
-              className={`flex items-center justify-center rounded-full p-4 w-24 h-24 text-white text-center text-sm font-semibold transition-transform transform hover:scale-110 hover:shadow-lg ${
-                selectedTopic === topic.value ? 'border-4 border-black' : ''
-              }`}
-              style={{ backgroundColor: topic.color }}
-              onClick={() => handleTopicChange(topic.value)}
-              disabled={quizStarted && selectedTopic !== topic.value}
-            >
-              {topic.label}
-            </button>
-          ))}
-        </div> */}
-      {/* </div> */}
-      {/* <br /> */}
       {!showResult ? (
         <div className="max-w-lg mx-auto p-6 bg-white rounded-lg shadow-lg transition-colors duration-300">
           <h2 className="cursor-default text-center text-2xl font-bold mb-3">
@@ -158,7 +146,7 @@ const TestPortal = () => {
           </div>
         </div>
       ) : (
-        <div className="max-w-lg mx-auto p-6 bg-white rounded-lg shadow-lg transition-colors duration-300">
+        <div className="max-w-xl mx-auto p-6 bg-white rounded-lg shadow-lg transition-colors duration-300">
           <h3 className="text-3xl font-bold text-center mb-3 text-purple-800">Results</h3>
           <h3 className="text-xl my-4 text-purple-800">
             Overall Percentage : <span className='text-black font-bold px-3 text-md'>{((result.score / (shuffledQuestions.length * 15)) * 100).toFixed(2)}%</span>
@@ -173,10 +161,31 @@ const TestPortal = () => {
             >
               Restart
             </button>
+            <button
+              className="px-6 py-2 ml-5 bg-purple-800 text-white font-semibold rounded-lg hover:bg-purple-900 hover:shadow-lg hover:-translate-y-1 hover:scale-105"
+              onClick={showWrongMCQs}
+            >
+              Show Wrong Answers
+            </button>
             <Link href="/internships"
-                className="px-6 py-2 ml-5 bg-purple-800 text-white font-semibold rounded-lg hover:bg-purple-900 hover:shadow-lg hover:-translate-y-1 hover:scale-105"
+              className="px-6 py-2 ml-5 bg-purple-800 text-white font-semibold rounded-lg hover:bg-purple-900 hover:shadow-lg hover:-translate-y-1 hover:scale-105"
             >Cancel</Link>
           </div>
+        </div>
+      )}
+      {showWrongAnswers && (
+        <div className="max-w-3xl mx-auto p-14 bg-white rounded-lg shadow-lg transition-colors duration-300 mt-14">
+          <h3 className="text-3xl font-bold text-center p-5 text-red-700 border-y-2 border-purple-800 mb-10">TEST EVALUATION</h3>
+          {selectedAnswers
+            .filter(answer => answer.selected !== answer.answers.indexOf(answer.correct))
+            .map((answer, index) => (
+              <div key={index} className="mb-4 p-1">
+                <h4 className="text-lg font-bold text-purple-800">Q: {answer.question}</h4>
+                <p className="text-sm text-red-600 pl-6 mt-2">Your Answer: {answer.answers[answer.selected]}</p>
+                <p className="text-sm text-green-600 pl-6">Correct Answer: {answer.correct}</p>
+                <div className="border-b p-3 border-purple-400"></div>
+              </div>
+            ))}
         </div>
       )}
       <br />

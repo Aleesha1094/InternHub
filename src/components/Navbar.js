@@ -21,6 +21,7 @@ function Navbar() {
     };
 
     const [nav , setnav] = useState(false);
+    
 
     const handlenav = () => {
         setnav(!nav);
@@ -46,9 +47,10 @@ const dropdown2 = [
                 <Image src={Navpic} alt="" className='w-40 h-20'/>
             </div>
             <div className="container flex items-center justify-center p-6 mx-auto text-purple-800 font-bold space-x-[40px] sm:flex hidden">
+              {/* <Link className="current:text-black border-b-2 border-transparent active active:text-black active:border-purple-800" href="/">Home</Link> */}
                 {
                     navbar.map((nav, index) => (
-                        <Link key={index} className="border-b-2 border-transparent hover:text-black hover:border-purple-800" href={nav.url}>{nav.title}</Link>
+                        <Link key={index} className="border-b-2 border-transparent focus:text-black focus:border-purple-800" href={nav.url}>{nav.title}</Link>
                     ))
                 }
                 {!session ? (
@@ -57,7 +59,7 @@ const dropdown2 = [
                   </>
                   ) : (
                   <>
-                    <Link href={GetUserRole()} className="border-b-2 border-transparent hover:text-black hover:border-purple-800">Profile</Link>
+                    <Link href={GetUserRole()} className="border-b-2 border-transparent focus:text-black focus:border-purple-800">Profile</Link>
                     <Dropdown name={session.user?.username} links={dropdown2}/>
                   </>
                 )}
@@ -73,16 +75,16 @@ const dropdown2 = [
                         <a href="/">Home</a>
                     </li>
                     <li className='text-2xl py-8'>
-                        <a href="">Internship</a>
+                        <a href="/internships">Internship</a>
                     </li>
                     <li className='text-2xl py-8'>
-                        <a href="">Admin</a>
+                        <a href="/login">Admin</a>
                     </li>
                     <li className='text-2xl py-8'>
-                        <a href="">Company</a>
+                        <a href="/register">Company</a>
                     </li>
                     <li className='text-2xl py-8'>
-                        <a href="">Test Bank</a>
+                        <a href="/testportal">Test Bank</a>
                     </li>
                 </ul>
             </div>
