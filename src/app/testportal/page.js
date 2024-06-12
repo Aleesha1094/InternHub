@@ -1,7 +1,7 @@
 "use client"
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-import Quiz from './../../../public/test.jpeg';
+import quiz from './../../../public/quiz.jpg';
 import Link from 'next/link';
 
 const Test = () => {
@@ -32,8 +32,8 @@ const Test = () => {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center min-h-screen py-8 bg-gray-100" data-aos="fade-up">
-      <div className="container max-w-4xl mx-auto p-8 bg-purple-100 rounded-3xl shadow-md">
+    <div className="container flex flex-col justify-center items-center min-h-screen py-8 bg-gray-100">
+      <div className="max-w-4xl mx-auto p-8 bg-purple-100 rounded-3xl shadow-md" data-aos="fade-up">
         <div className="grid grid-cols-3 gap-4">
           <div className="bg-white p-4 rounded-2xl shadow-md">
             <h3 className="text-2xl font-bold my-4">Select Topic</h3>
@@ -48,8 +48,8 @@ const Test = () => {
               ))}
           </div>
           <div className="col-span-2 bg-white p-4 rounded-2xl shadow-md">
-            <div className="w-200 h-80 rounded-md overflow-hidden flex justify-center">
-              <Image src={Quiz} alt="Welcome Back to Quiz Spring!" />
+            <div className="w-200 h-80 overflow-hidden flex justify-center">
+              <Image src={quiz} className="rounded-xl opacity-90" alt="Welcome Back to Quiz Spring!" />
             </div>
             <div className="mt-5 flex justify-center">
             <Link href={{

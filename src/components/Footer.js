@@ -30,7 +30,7 @@ function Footer() {
                     <p className='text-[#333] font-poppins font-semibold cursor-default'>{Links.title}</p>
                     {
                         Links.sub.map((links, index) => (
-                            <p key={index} className='text-sm text-gray-600 hover:underline hover:text-base hover:text-purple-800'><Link href={links.url}>{links.subheading}</Link></p>
+                            <p key={index} className='text-sm text-gray-600 hover:underline hover:text-base hover:text-purple-800'><Link className="transition duration-300 hover:scale-105" href={links.url}>{links.subheading}</Link></p>
                         ))
                     }
                 </div>

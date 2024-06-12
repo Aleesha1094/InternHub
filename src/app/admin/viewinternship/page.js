@@ -66,11 +66,8 @@ function InternshipData() {
           onChange={(e) => handleTitleFilter(e.target.value)}
           value={selectedTitle}>
           <option value="all">All Internships</option>
-          <option value="App development">App Development</option>
+          <option value="Telenor Pakistan">App Development</option>
           <option value="Web Development">Web Development</option>
-          {/* <option value="backend development">Backend Development</option> */}
-          {/* <option value="it">IT</option> */}
-          {/* <option value="computer science">Computer Science</option> */}
           <option value="Bank Internship">Banking</option>
           <option value="Textile Internship">Textile Engineering</option>          
         </select>

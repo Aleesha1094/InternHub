@@ -93,12 +93,12 @@ if (sessionStatus === "loading") {
                     required
                   />
                 </div>  
-              {error && <p className="text-center text-red-500 mt-4">{error}</p>}
-              <div className="flex justify-center">
+                {error && <p className="text-center text-red-500 mt-4">{error}</p>}
+                <div className="flex justify-center">
                 <button
                   type="submit"
                   className="px-6 py-2 mt-5 bg-purple-600 text-white font-bold rounded-lg hover:bg-purple-700 transition duration-300 hover:scale-110"> 
-                  Log In
+                  Register Now
                 </button>
               </div> 
               <div className= "text-center mt-3">                 

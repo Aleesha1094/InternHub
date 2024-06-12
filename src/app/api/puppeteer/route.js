@@ -7,12 +7,12 @@ import { ScrapeWebsites } from '@/components/Scraper/ScraperModules';
 import { scheduleJob } from 'node-schedule';
 
 puppeteer.use(Stealth());
-scheduleJob('* * * * *', () => {
+scheduleJob('*/5 * * * *', () => {
     console.log('Running scraping and updating task at midnight...');
-    scrapeAndSave();
+    GET();
 });
 
-export async function scrapeAndSave() {
+export async function GET() {
     let browser;
     try {
         browser = await puppeteer.launch({

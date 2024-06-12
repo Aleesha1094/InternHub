@@ -9,7 +9,7 @@ export async function POST(request) {
     
     const existingUser = await Company.findOne(email);
     
-    const hashedPassword = await bcrypt.hash(password, 5);
+    const hashedPassword = await bcrypt.hash(password, 10);
     existingUser.password = hashedPassword;
 
     existingUser.resetToken = undefined;

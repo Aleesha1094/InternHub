@@ -14,7 +14,7 @@ export async function POST(request) {
       return new NextResponse({message: "Email is Already in Use"}, { status: 400 });
     }
 
-    const hashedPassword = await bcrypt.hash(password, 5);
+    const hashedPassword = await bcrypt.hash(password, 10);
     const newCompany = new Company({
       email,
       username,

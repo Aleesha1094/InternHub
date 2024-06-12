@@ -24,7 +24,7 @@ const CInternshipSchema = mongoose.Schema({
     },
     c_url : {
         type: String,
-        required: false
+        required: true
     }, 
     contact_email : {
         type: String,
