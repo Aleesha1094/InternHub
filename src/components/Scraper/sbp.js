@@ -15,7 +15,7 @@ export async function SBP(page) {
                 title: "Bank Internship",
                 url: window.location.href,
                 // description: paragraphs[0].textContent.trim(),
-                eligibilityCriteria: Array.from(blockquote.querySelectorAll('ul li')).map(li => li.textContent.trim()),
+                eligibilityCriteria: Array.from(blockquote.querySelectorAll('ul li')).map(li => li.textContent.trim()).join('\n'),
                 description,
                 duration,
                 // selectionDetails

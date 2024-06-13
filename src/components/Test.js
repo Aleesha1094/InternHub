@@ -9,7 +9,7 @@ const Test = () => {
       <div className="p-5 w-full">
         <h1 className="text-center text-5xl font-bold mb-12">Internship Test</h1>
         <div className="flex items-center justify-center">      
-        <div className="grid grid-cols-2 gap-20 w-9/12">
+        <div className="grid sm:grid-cols-2 grid-cols-1 gap-20 w-9/12">
           <div className='grid grid-rows-1 gap-4'>
             <Link href="/testportal">
             <div className=" bg-purple-400 text-white rounded-xl p-4 flex items-center justify-center hover:-translate-y-1 hover:scale-103" data-aos="fade-up">

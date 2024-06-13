@@ -3,6 +3,8 @@ import { Telenor } from './Telenor';
 import { SBP } from './sbp';
 import { CrescentInternship } from './Crescent';
 import { GadoonInternship } from './Gadoon';
+import { HabibMetro } from "./HabibMetro"
+import { TechloSetSolutions } from './Techloset';
 
 export async function ScrapeWebsites(browser) {
     const results = [];
@@ -24,6 +26,12 @@ export async function ScrapeWebsites(browser) {
 
         const website5 = await GadoonInternship(page);
         results.push(website5);
+
+        const website6 = await HabibMetro(page);
+        results.push(website6);
+
+        const website7 = await TechloSetSolutions(page);
+        results.push(website7);
 
         return results;
     } finally {

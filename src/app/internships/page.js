@@ -5,6 +5,7 @@ import Link from "next/link";
 function InternshipData() {
   const [error, setError] = useState("");
   const [internships, setInternships] = useState([]); 
+  const [selectedTitle, setSelectedTitle] = useState("all");
 
   useEffect(() => {
     async function fetchInternships() {
@@ -24,6 +25,18 @@ function InternshipData() {
     fetchInternships();
   }, []);
 
+  const handleTitleFilter = (e) => {
+    setSelectedTitle(e.target.value.toLowerCase());
+  };
+
+  const predefinedTitles = ["All", "Bank Internship", "Company Internship", "Textile Internship", "Web Development"];
+
+  const filteredInternships = selectedTitle === "all"
+    ? internships
+    : internships.filter(internship => 
+        internship.title.toLowerCase().includes(selectedTitle)
+      );
+
 
   return (
     <div className="min-h-screen bg-gray-100 py-20">
@@ -31,9 +44,23 @@ function InternshipData() {
       <div className="border-t-4 border-purple-800 py-1"></div>
       <h1 className="text-4xl font-bold text-center text-purple-800 my-4">INTERNSHIPS</h1>
       <div className="border-t-4 border-purple-800 mb-8"></div>
-      {internships && internships.length > 0 ? (
+      {/* {internships && internships.length > 0 ? ( */}
+      <div className="flex justify-center mb-8">
+          <select
+            onChange={handleTitleFilter}
+            className="p-2 border rounded"
+          >
+            {predefinedTitles.map((title, index) => (
+              <option key={index} value={title}>
+                {title}
+              </option>
+            ))}
+          </select>
+        </div>
+        {filteredInternships && filteredInternships.length > 0 ? (
         <ul className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 gap-8 m-3">
-          {internships.map((internship) => (
+          {filteredInternships.map((internship) => (
+          // {internships.map((internship) => (
             <li key={internship._id} className="bg-white rounded-lg shadow-md hover:shadow-2xl transition-shadow duration-300">
               <div className="p-6">
                 <h4 className="text-2xl font-bold text-purple-700 mb-2">{internship.company_title}</h4>

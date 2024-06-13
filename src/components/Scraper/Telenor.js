@@ -12,6 +12,7 @@ export async function Telenor(page) {
             url: window.location.href,
             title: heading?.textContent.trim() || '',
             description: paragraphs[0]?.textContent.trim() || '',
+            duration: "6 Weeks",
             // whatWeAreLookingFor: paragraphs[1]?.textContent.trim() || '',
             // whatWeProvide: paragraphs[2]?.textContent.trim() || '',
             // whatToExpect: paragraphs[3]?.textContent.trim() || '',

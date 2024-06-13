@@ -5,9 +5,17 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useSession } from 'next-auth/react';
 import Dropdown from './Dropdown'
+import { useEffect } from 'react'
 
 function Navbar() {
     const { data: session } = useSession();
+
+    useEffect(() => {
+      fetch('/api/puppeteer')
+          .then(response => response.json())
+          .then(data => console.log(data.message))
+          .catch(error => console.error('Error scheduling scraping job:', error));
+    }, []);
 
     const GetUserRole = () => {
       if (session) {
@@ -69,10 +77,10 @@ const dropdown2 = [
         </svg>
       </div>
 
-      <div className={`fixed inset-0 z-20 inset-0 backdrop-blur-xl bg-opacity-50 bg-white px-4 py-7 flex flex-col transition-transform duration-300 ${nav ? 'translate-x-0' : '-translate-x-full'}`}>
+      <div className={`fixed inset-0 z-20 inset-0 backdrop-blur-xl bg-opacity-50 bg-white py-7 flex flex-col transition-transform duration-300 ${nav ? 'translate-x-0' : '-translate-x-full'}`}>
         <div className='flex items-center justify-between px-4'>
           <Image src={Navpic} alt="" className='w-24 h-12' />
-          <div onClick={handlenav} className='z-10'>
+          <div onClick={handlenav} className='z-8'>
             <p className='cursor-pointer font-bold text-2xl text-purple-800'>X</p>
           </div>
         </div>

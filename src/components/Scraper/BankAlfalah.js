@@ -18,8 +18,8 @@ export async function BankAlfalah(page) {
             url: window.location.href,
             // detail: paragraphs[0].textContent.trim() || '',
             description: paragraphs[1].textContent.trim() || '',
-            duration: duration.trim() || '',
-            eligibilityCriteria: Array.from(eligibilityCriteria).map(li => li.textContent.trim()) || ''
+            duration: duration.trim() || '8 to 2 Weeks',
+            eligibilityCriteria: Array.from(eligibilityCriteria).map(li => li.textContent.trim()).join(', ') || ''
         };
     });
     internshipDetails.title = title;

@@ -12,6 +12,7 @@ export async function GadoonInternship(page) {
             title: "Textile Internship",
             description: descriptionElements[0]?.textContent.trim() || '',
             eligibilityCriteria: descriptionElements[2]?.textContent.trim() || '',
+            duration: "6 Weeks to 3 Months",
             // url: applyNowLink?.href || ''
         };
     });
