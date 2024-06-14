@@ -39,16 +39,6 @@ useEffect(() => {
       throw new Error('Failed to Delete Internship!');
     }
   };
-  const handleTitleFilter = (title) => {
-    setSelectedTitle(title.toLowerCase());
-  };
-  
-
-  const filteredInternships = selectedTitle === "all"
-  ? internships
-  : internships.filter(internship => 
-      internship.title.toLowerCase().includes(selectedTitle.toLowerCase())
-    );
 
   return (
     <div className="min-h-screen bg-gray-100 py-20">

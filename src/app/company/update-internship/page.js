@@ -81,6 +81,10 @@ function UpdateInternship() {
         }
       };
 
+      if (!internship) {
+        return <div className="text-gray-700 font-bold text-center m-9 text-4xl">Loading...</div>;
+    }
+
     return (  
       <div className="container mx-auto mt-10 mb-10">
       <h1 className="text-4xl text-center font-extrabold mb-6 text-purple-800">Update Internship</h1>

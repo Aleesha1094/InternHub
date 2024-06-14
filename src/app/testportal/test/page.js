@@ -113,7 +113,7 @@ const TestPortal = () => {
 
   return (
     <div className="container mx-auto p-9 bg-gray-100 font-sans">
-      <h1 className="text-center text-5xl my-7 font-bold cursor-default">Let's Start Quiz</h1>
+      <h1 className="text-center text-5xl my-7 font-bold cursor-default">Lets Start Quiz</h1>
       {!showResult ? (
         <div className="max-w-lg mx-auto p-6 bg-white rounded-lg shadow-lg transition-colors duration-300">
           <h2 className="cursor-default text-center text-2xl font-bold mb-3">

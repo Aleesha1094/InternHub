@@ -19,7 +19,7 @@ const Aboutus = () => {
         <div className="p-6">
           <h3 className="text-xl font-bold text-gray-900">Our Mission</h3>
           <p className="mt-4 text-gray-500 text-justify">
-            To equip students with the skills needed in today's industries, hands-on experience, and valuable professional connections, fostering their success in their chosen careers and their ability to contribute positively to society.
+            To equip students with the skills needed in todays industries, hands-on experience, and valuable professional connections, fostering their success in their chosen careers and their ability to contribute positively to society.
           </p>
         </div>
       </div>

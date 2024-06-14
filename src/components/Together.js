@@ -16,7 +16,7 @@ const Together = () => {
             Together We Advance
           </h2>
           <p className="mt-3 max-w-md mx-auto text-lg leading-6 text-gray-500 sm:text-xl md:mt-5 md:max-w-3xl">
-          "We are at the forefront of innovation, partnering with the brightest minds to overcome the challenging obstacles of our time."          </p>
+          We are at the forefront of innovation, partnering with the brightest minds to overcome the challenging obstacles of our time.          </p>
           <div className="mt-5 sm:mt-8 sm:flex justify-center">
             <div className="rounded-md shadow">
               <Link href="/aboutus"

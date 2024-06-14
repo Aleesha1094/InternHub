@@ -13,8 +13,8 @@ function Privacypolicy(){
       <h1 className="text-4xl text-center font-bold text-purple-800">Privacy Policy for Future Interns</h1>
       <div className='m-10'>
       <p className="mt-4 text-justify"> 
-        Certainly, here's the text with the provided changes:
-        At Futureinterns.pk, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by Pakistan's Virtual Internship Platform and how we use it. If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us. This Privacy Policy applies only to our online activities and is valid for visitors to our website with regards to the information that they share and collect at Futureinterns.pk. This policy is not applicable to any information collected offline or via channels other than this website.
+        Certainly, heres the text with the provided changes:
+        At Futureinterns.pk, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by Pakistans Virtual Internship Platform and how we use it. If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us. This Privacy Policy applies only to our online activities and is valid for visitors to our website with regards to the information that they share and collect at Futureinterns.pk. This policy is not applicable to any information collected offline or via channels other than this website.
       </p>
       <h2 className="text-3xl font-bold mt-6">Consent</h2>
       <p className="mt-2">

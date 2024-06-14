@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
-import Internship_Test from "../../../../../Models/Internship_Test";
-import connectDb from "../../../../../middleware/dbConnection";
+import Internship_Test from "@/models/Internship_Test";
+import connectDb from "@/utils/dbConnection";
 
 // export async function PUT(request, { params }) {
 //     try {

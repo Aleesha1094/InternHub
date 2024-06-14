@@ -67,7 +67,7 @@ function Categories() {
           <div className="flex justify-center">
             <Link href={internship.url}
                className="text-white bg-purple-700 px-4 py-2 rounded-full mt-4 transition-transform transform hover:scale-105 hover:bg-purple-900">
-                Apply Now
+                Visit Official Site
             </Link>
           </div>
         </div>
