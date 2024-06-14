@@ -34,7 +34,7 @@ const Test = () => {
   return (
     <div className="container flex flex-col justify-center items-center min-h-screen py-8 bg-gray-100">
       <div className="max-w-4xl mx-auto p-8 bg-purple-100 rounded-3xl shadow-md" data-aos="fade-up">
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid sm:grid-cols-3 grid-cols-1 gap-4">
           <div className="bg-white p-4 rounded-2xl shadow-md">
             <h3 className="text-2xl font-bold my-4">Select Topic</h3>
             {tests.map((test) => (
