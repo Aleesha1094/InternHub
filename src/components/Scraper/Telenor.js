@@ -10,7 +10,7 @@ export async function Telenor(page) {
         return {
             company_title: "Telenor Pakistan",
             url: window.location.href,
-            title: heading?.textContent.trim() || '',
+            title: "Business Internship" || '',
             description: paragraphs[0]?.textContent.trim() || '',
             duration: "6 Weeks",
             // whatWeAreLookingFor: paragraphs[1]?.textContent.trim() || '',

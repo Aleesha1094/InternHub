@@ -5,6 +5,7 @@ import { useSession } from "next-auth/react";
 
 function ResetPassword ({params}) {
   const [error, setError] = useState('');
+  const [success, setSuccess] = useState(""); 
   const [verified, setVerified] = useState(false);
   const [user, setUser] = useState(null);
   const router = useRouter();
@@ -69,7 +70,8 @@ function ResetPassword ({params}) {
           setError(res.error);
         }
         if (res.status === 201) {
-          setError("Password Updated Successfully");
+          setError("");
+          setSuccess("Password Updated Successfully");
           setTimeout(() => {
             router.push('/companylogin')
           }, 1500);
@@ -105,6 +107,7 @@ function ResetPassword ({params}) {
               />
             </div>
             {error && <p className="text-center text-red-500 mt-4">{error}</p>}
+            {success && <p className="text-center text-green-500 font-bold text-base">{success}</p>}
           </div>
           <div className="flex justify-center mt-6">
             <button

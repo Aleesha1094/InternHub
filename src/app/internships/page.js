@@ -11,13 +11,15 @@ function InternshipData() {
   useEffect(() => {
     async function fetchInternships() {
       try {
-        const response = await fetch('/api/internships');
+        const responseInternships = await fetch('/api/internships');
         const responseCInternships = await fetch('/api/cinternships');
 
-        if (response.ok) {
-          const data = await response.json();
-          setInternships(data.Internshipss);
-          setCInternships(data.data);
+        if (responseInternships.ok && responseCInternships.ok) {
+          const dataInternships = await responseInternships.json();
+          const dataCInternships = await responseCInternships.json();
+
+          setInternships(dataInternships.Internshipss);
+          setCInternships(dataCInternships.Internshipss);
         }  else {
             setError(response.error);
         }
@@ -33,7 +35,7 @@ function InternshipData() {
     setSelectedTitle(e.target.value.toLowerCase());
   };
 
-  const predefinedTitles = ["All", "Bank Internship", "Company Internship", "Textile Internship", "Web Development"];
+  const predefinedTitles = ["All", "Bank Internship", "Business Internship", "Textile Internship", "Web Development", "CS & SE Internship"];
 
   const filteredInternships = selectedTitle === "all"
     ? internships

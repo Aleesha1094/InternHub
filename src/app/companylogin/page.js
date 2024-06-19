@@ -41,7 +41,6 @@ function CompanyLogin() {
             email,
             password,
         });
-        console.log(res);
         if(res.error){
             setError("Invalid Email or Password!");
             return;

@@ -1,12 +1,11 @@
 "use client"
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { useSession } from "next-auth/react";
 
 function AddInternship() {
   const [error, setError] = useState(""); 
+  const [success, setSuccess] = useState(""); 
   const router = useRouter();
-  const { data: session, status: sessionStatus } = useSession();
 
   const handleSubmit = async (e) => {
         e.preventDefault();
@@ -40,7 +39,8 @@ function AddInternship() {
             console.log("Error: " + res.error)
           }
           if (res.status === 201) {
-            setError("Internship Added Successfully");
+            setError("");
+            setSuccess("Internship Added Successfully");
             setTimeout(() => {
               router.push('/admin')
             }, 1500)      
@@ -119,7 +119,8 @@ function AddInternship() {
             className="form-control w-full px-4 py-2 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
             id="description" rows="4" placeholder="Gave Description of Internship"></textarea>
         </div>
-        {error && <p className="underline underline-offset-4 text-center text-red-500 font-bold text-base">{error}</p>}
+        {error && <p className="text-center text-red-500 font-bold text-base">{error}</p>}
+        {success && <p className="text-center text-green-500 font-bold text-base">{success}</p>}
         <div className="flex justify-center">
           <button type="submit" className="py-3 px-7 bg-purple-600 text-white font-bold rounded-lg hover:bg-purple-700 transition duration-300">
             Submit

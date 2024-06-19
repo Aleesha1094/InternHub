@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 function UpdateInternship() {
   const [internship, setInternship] = useState(null);
   const [error, setError] = useState(""); 
+  const [success, setSuccess] = useState(""); 
   const router = useRouter();
   const searchParams = useSearchParams();
   const id = searchParams.get('id');
@@ -65,15 +66,19 @@ function UpdateInternship() {
                 Duration
             }),
           });
+          const errorData = await res.json();
           if (res.status === 500) {
-            setError(res.error);
+            setError(errorData.error);
           }
           if (res.status === 404) {
-            setError(res.error);
+            setError(errorData.error);
           }
           if (res.status === 200) { 
-            setError(res.message);
-            router.push('/')
+            setError("");
+            setSuccess("Internship Updated Successfully");
+            setTimeout(() => {
+            router.push('/admin/viewinternship');
+            }, 1500)  
           }
         } catch (error) {
           setError("Error, Try Again!");
@@ -95,8 +100,8 @@ function UpdateInternship() {
             type="title"
             className="w-full px-4 py-2 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:shadow-md hover:bg-purple-100"
             id="floatingInput"
-            placeholder="Title"
-            // defaultValue={internship.title || ""}
+            placeholder="Type of Internship"
+            defaultValue={internship.title || ""}
             required
           />
         </div>
@@ -107,7 +112,7 @@ function UpdateInternship() {
             className="w-full px-4 py-2 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:shadow-md focus:bg-purple-100"
             id="floatingInput"
             placeholder="Email through which students can contact you"
-            // defaultValue={internship.contact_email || ""} 
+            defaultValue={internship.contact_email || ""} 
             required
           />
         </div>
@@ -118,7 +123,7 @@ function UpdateInternship() {
             className="w-full px-4 py-2 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:shadow-md focus:bg-purple-100"
             id="floatingInput"
             placeholder="Location"
-            // defaultValue={internship.location || ""} 
+            defaultValue={internship.location || ""} 
             required
           />
         </div>
@@ -128,7 +133,7 @@ function UpdateInternship() {
             type="eligibilityCriteria"
             className="form-control w-full px-4 py-2 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:shadow-md focus:bg-purple-100"
             id="floatingInput"
-            // defaultValue={internship.eligibilityCriteria || ""}
+            defaultValue={internship.eligibilityCriteria || ""}
             placeholder="Eligibility Criteria for Internship"
             required
           />
@@ -140,7 +145,7 @@ function UpdateInternship() {
             className="w-full px-4 py-2 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:shadow-md focus:bg-purple-100"
             id="floatingInput"
             placeholder="Your website URL"
-            // defaultValue={internship.c_url || ""} 
+            defaultValue={internship.c_url || ""} 
           />
         </div>
         <div className="mb-4">
@@ -149,7 +154,7 @@ function UpdateInternship() {
             type="duration"
             className="form-control w-full px-4 py-2 bg-gray-100 rounded-lg focus:outline-none focus:shadow-md focus:ring-2 focus:ring-purple-500 focus:bg-purple-100"
             id="floatingInput"
-            // defaultValue={internship.duration || ""}
+            defaultValue={internship.duration || ""}
             placeholder="Internship Duration"
           />
         </div>
@@ -158,14 +163,16 @@ function UpdateInternship() {
           <textarea 
             className="w-full px-4 py-2 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:bg-purple-100"
             id="description" rows="4" placeholder="Give a description of the internship"
-            // defaultValue={internship.description || ""}
+            defaultValue={internship.description || ""}
           ></textarea>
         </div>
-        <p className="text-red-500 text-sm">{error && error}</p>
-        <div className="flex items-center justify-center">
-        <button type="submit" className="py-2 px-8 bg-purple-600 text-white font-bold rounded-lg hover:bg-purple-700 hover:shadow-lg hover:scale-105">
-          Update
-        </button></div>
+        {error && <p className="text-center text-red-500 font-bold text-base">{error}</p>}
+        {success && <p className="text-center text-green-500 font-bold text-base">{success}</p>}        
+        <div className="flex justify-center">
+          <button type="submit" className="py-2 px-8 bg-purple-600 text-white font-bold rounded-lg hover:bg-purple-700 hover:shadow-lg hover:scale-105">
+            Update
+          </button>
+        </div>
       </form>
       <div className="pb-5"></div>
     </div>

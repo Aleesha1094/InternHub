@@ -18,12 +18,12 @@ const Test = () => {
             </Link>
             <Link href="/testportal">
             <div className="bg-purple-500 text-white rounded-xl p-4 flex items-center justify-center hover:-translate-y-1 hover:scale-103 duration-300" data-aos="fade-up">
-              <span className="text-l font-bold">Mobile Development</span>
+              <span className="text-l font-bold">Business Internships</span>
             </div>
             </Link>
             <Link href="/testportal">
             <div className="bg-purple-600 text-white rounded-xl p-4 flex items-center justify-center hover:-translate-y-1 hover:scale-103 duration-300" data-aos="fade-up">
-              <span className="text-l font-bold">Information Security</span>
+              <span className="text-l font-bold">SE & CS Internships</span>
             </div>  
             </Link>
             <Link href="/testportal">
@@ -33,7 +33,7 @@ const Test = () => {
             </Link>
             <Link href="/testportal">
             <div className="bg-purple-800 text-white rounded-xl p-4 flex items-center justify-center hover:-translate-y-1 hover:scale-103 duration-300" data-aos="fade-up">
-              <span className="text-l font-bold">Bank</span>
+              <span className="text-l font-bold">Banking</span>
             </div>  
             </Link>
           </div>

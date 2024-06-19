@@ -5,6 +5,7 @@ import { useSession } from "next-auth/react";
 
 function AddInternship() {
     const [error, setError] = useState(""); 
+    const [success, setSuccess] = useState(""); 
     const router = useRouter();
     const { data: session } = useSession();
     const companyId = session.user.id;
@@ -49,7 +50,8 @@ function AddInternship() {
             setError(res.error);
           }
           if (res.status === 201) {
-            setError("Internship Added Successfully");
+            setError("");
+            setSuccess("Internship Added Successfully");            
             setTimeout(() => {
               router.push('/company')
             }, 1500)   
@@ -129,6 +131,7 @@ function AddInternship() {
               id="description" rows="4" placeholder="Gave Description of Internship"></textarea>
           </div>
           {error && <p className="text-center text-red-500 font-bold text-base">{error}</p>}
+          {success && <p className="text-center text-green-500 font-bold text-base">{success}</p>}
           <div className="flex justify-center">
             <button type="submit" className="py-2 px-6 bg-purple-600 shadow-md text-white font-bold rounded-lg hover:bg-purple-700 hover:scale-110 transition duration-300">
                 Submit

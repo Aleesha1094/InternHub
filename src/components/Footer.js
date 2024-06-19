@@ -15,10 +15,10 @@ function Footer() {
     const category = {
         title: 'Available Internships',
         sub: [
-            { subheading: 'Mobile Development' },
+            { subheading: 'Business Internship' },
             { subheading: 'Web Development' },
             { subheading: 'Textile Engineering' },
-            // { subheading: 'Cloud Computing' },
+            { subheading: 'CS & SE Internship' },
             // { subheading: 'UI/UX' },
             { subheading: 'Banking' },
         ]

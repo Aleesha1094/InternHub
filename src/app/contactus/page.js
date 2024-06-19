@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 
 function ContactUs() {
     const [error, setError] = useState("");
+    const [success, setSuccess] = useState(""); 
     const router = useRouter();
 
     const isValidEmail = (user_email) => {
@@ -40,7 +41,8 @@ function ContactUs() {
             setError(res.error);
           }
           if (res.status === 201) {
-            setError("Form Submit Successfully");
+            setError("");
+            setSuccess("Form Added Successfully");
             setTimeout(() => {
               router.push('/');
             }, 1500);
@@ -95,7 +97,8 @@ function ContactUs() {
               className="w-full px-4 py-2 mt-1 bg-gray-100 rounded-lg focus:outline-none focus:ring-1 focus:ring-purple-900 border-b-2  border-purple-900 transition duration-300"    
               id="description" rows="4"   placeholder="Share your Thoughts" required />
         </div>
-        {error && <p className="text-center text-red-500 mt-4">{error}</p>}
+        {error && <p className="text-center text-red-500 font-bold text-base">{error}</p>}
+        {success && <p className="text-center text-green-500 font-bold text-base">{success}</p>}
         <div className="flex justify-center">
           <button
             type="submit"

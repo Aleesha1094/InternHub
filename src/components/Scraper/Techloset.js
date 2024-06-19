@@ -4,7 +4,7 @@ export async function TechloSetSolutions(page) {
 
     const internshipDetails = await page.$eval('.jobForm_childCol__rHH66', (container) => {
         // Initialize variables to store extracted data
-        let title = "";
+        // let title = "";
         let description = "";
         let duration = "";
         let location = "";
@@ -12,9 +12,9 @@ export async function TechloSetSolutions(page) {
 
         // Attempt to extract data from the container
         const titleElement = container.querySelector('div:nth-child(2) p');
-        if (titleElement) {
-            title = titleElement.textContent.trim();
-        }
+        // if (titleElement) {
+        //     title = titleElement.textContent.trim();
+        // }
 
         const descriptionElement = container.querySelectorAll('div:nth-child(2) p')[1];
         if (descriptionElement) {
@@ -44,7 +44,7 @@ export async function TechloSetSolutions(page) {
 
         return {
             company_title: "TechloSet Solutions",
-            title: title,
+            title: "CS & SE Internship",
             url: window.location.href,
             description: description,
             duration: duration,

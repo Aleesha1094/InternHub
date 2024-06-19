@@ -6,6 +6,7 @@ import { useSearchParams } from 'next/navigation'
 function UpdateInternship() {
     const [internship, setInternship] = useState(null);
     const [error, setError] = useState(""); 
+    const [success, setSuccess] = useState(""); 
     const router = useRouter();
     const searchParams = useSearchParams();
     const id = searchParams.get('id');
@@ -59,8 +60,8 @@ function UpdateInternship() {
                 const errorData = await res.json();
                 setError(errorData.error);
             } else if (res.status === 200) {
-                const successData = await res.json();
-                setError(successData.message);
+                setError("");
+                setSuccess("Internship Updated Successfully");
                 setTimeout(() => {
                 router.push('/admin/viewinternship');
                 }, 1500)  
@@ -146,6 +147,7 @@ function UpdateInternship() {
                     ></textarea>
                 </div>
                 {error && <p className="text-center text-red-500 font-bold text-base">{error}</p>}
+                {success && <p className="text-center text-green-500 font-bold text-base">{success}</p>}
                 <div className="flex items-center justify-center">
                     <button type="submit" className="py-2 px-8 bg-purple-600 text-white font-bold rounded-lg hover:bg-purple-700 transition duration-300">
                         Update Internship
