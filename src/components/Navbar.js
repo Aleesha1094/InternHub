@@ -10,12 +10,12 @@ import { useEffect } from 'react'
 function Navbar() {
     const { data: session } = useSession();
 
-    useEffect(() => {
-      fetch('/api/puppeteer')
-          .then(response => response.json())
-          .then(data => console.log(data.message))
-          .catch(error => console.error('Error scheduling scraping job:', error));
-    }, []);
+    // useEffect(() => {
+    //   fetch('/api/puppeteer')
+    //       .then(response => response.json())
+    //       .then(data => console.log(data.message))
+    //       .catch(error => console.error('Error scheduling scraping job:', error));
+    // }, []);
 
     const GetUserRole = () => {
       if (session) {
