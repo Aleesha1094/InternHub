@@ -28,13 +28,8 @@ import { NextResponse } from 'next/server';
 import Internships from '@/models/Internships';
 import Stealth from "puppeteer-extra-plugin-stealth";
 import { ScrapeWebsites } from '@/components/Scraper/ScraperModules';
-// import { scheduleJob } from 'node-schedule';
 
 puppeteer.use(Stealth());
-// scheduleJob('*/2 * * * *', () => {
-//     console.log('Running scraping and updating task at midnight...');
-//     GET();
-// });
 export async function SaveAndScrape() {
     let browser;
     try {

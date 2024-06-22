@@ -1,18 +1,12 @@
 import { NextResponse } from "next/server";
-import { SaveAndScrape } from "../puppeteer/route";
+import { scrapeAndSave } from "@/components/Scraper/scraper";
+
 export async function GET() {
-    // const result = await fetch(
-    //   'http://worldtimeapi.org/api/timezone/America/Chicago',
-    //   {
-    //     cache: 'no-store',
-    //   },
-    // );
-    // const data = await result.json();
-    // await fetch('/api/puppeteer')
-    // .then(response => response.json())
-    // .then(data => console.log(data.message))
-    // .catch(error => console.error('Error scheduling scraping job:', error));
-    SaveAndScrape();
-   
-    return NextResponse.json({ body: "HEllo cron" }, { status: 200 });
-  }
+    try {
+        await scrapeAndSave();
+        return NextResponse.json({ message: 'Scraping job is complete.' }, { status: 200 });
+    } catch (error) {
+        console.error('Error in scrapeAndSave:', error);
+        return NextResponse.json({ message: 'An error occurred during scraping.' }, { status: 500 });
+    }
+}

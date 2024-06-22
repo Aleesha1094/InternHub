@@ -5,7 +5,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useSession } from 'next-auth/react';
 import Dropdown from './Dropdown'
-import { useEffect } from 'react'
 
 function Navbar() {
     const { data: session } = useSession();
