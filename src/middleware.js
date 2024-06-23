@@ -11,7 +11,7 @@ export async function middleware(req) {
 
   const token = await getToken({ req });
 
-  const companyProtectedRoutes = ["/company", "/company/view-Internship", "/company/add-internship", "/company/update-internship"];
+  const companyProtectedRoutes = ["/company", "/company/view-Internship", "/company/addinternship", "/company/update-internship"];
   const adminProtectedRoutes = ["/admin", "/admin/viewinternship", "/admin/addinternship", "/admin/updateinternship", "/admin/companydetails", "/admin/feedbackdetails"];
 
   if (!token) {

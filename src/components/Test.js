@@ -1,10 +1,28 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
+import Admin1 from "./../../public/Admin1.jpeg";
+import Admin2 from "./../../public/Admin2.jpeg";
+import Admin3 from "./../../public/Admin3.jpeg";
 
 const Test = () => {
   return (
     <div>
       <br/>
+      {/* <p className='text-center text-5xl font-bold mt-72'>Meet Us</p>
+      <div className="flex justify-center">
+        <div className='grid sm:grid-cols-3 grid-cols-1 gap-12 p-10 mx-auto'>
+          <div className='rounded-3xl shadow-2xl  shadow-indigo-500/50'>
+            <Image src={Admin1} alt="" className='rounded-3xl h-[450px]' />
+          </div>
+          <div className='rounded-3xl'>
+            <Image src={Admin2} alt="" className='rounded-3xl h-[450px]  shadow-2xl  shadow-indigo-500/50' />
+          </div>
+          <div className='rounded-3xl'>
+            <Image src={Admin3} alt="" className='rounded-3xl h-[450px]  shadow-2xl  shadow-indigo-500/50' />
+          </div>
+        </div>
+      </div> */}
     <div className="relative bg-gray-200 rounded-3xl sm:rounded-none mt-60 p-7 flex items-center justify-center">
       <div className="p-5 w-full">
         <h1 className="text-center text-5xl font-bold mb-12">Internship Test</h1>

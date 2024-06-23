@@ -11,7 +11,7 @@ const Aboutus = () => {
         About Us
       </h2>
       <p className="mt-4 text-lg text-gray-500 text-center text-justify">
-        The Internship Cell at the Institute of Innovation in Technology & Management connects students with industry, providing crucial hands-on learning opportunities. Our main objective is to immerse students in real work environments, enabling them to translate academic concepts into practice and acquire key skills for their careers. The Internship Cell is dedicated to preparing students to be adaptable and skilled professionals, ready to make impactful contributions in their respective fields.
+        The Internships at the Institute of Innovation in Technology & Management connects students with industry, providing crucial hands-on learning opportunities. Our main objective is to immerse students in real work environments, enabling them to learn academic concepts into practice and acquire key skills for their careers. The Internship Test is dedicated to preparing students to be adaptable and skilled professionals, ready to make impactful contributions in their respective fields.
       </p>
     </div>
     <div className="mt-16 max-w-7xl mx-auto grid grid-cols-1 gap-12 mx-5 sm:grid-cols-2 lg:grid-cols-3 text-center">

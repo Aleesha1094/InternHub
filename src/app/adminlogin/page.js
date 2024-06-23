@@ -2,6 +2,8 @@
 import React, { useEffect, useState } from "react";
 import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import Login from "./../../../public/login.jpg";
+import Image from "next/image";
 
 function AdminLogin() {
   const router = useRouter();
@@ -51,10 +53,13 @@ function AdminLogin() {
   return (
     sessionStatus !== "authenticated" && (   
       <div className="flex items-center justify-center min-h-screen">
-      <div className="w-full max-w-lg bg-white p-9 drop-shadow-[0_0px_400px_rgba(0,0,0.20,0.23)] rounded-md">
-          <h1 className="text-3xl font-bold text-center mx-7">Login Account</h1>
-          <form onSubmit={handleSubmit}>
-            <div className="mt-5">
+        <div className="w-full max-w-lg bg-white p-9 drop-shadow-[0_0px_400px_rgba(0,0,0.20,0.23)] rounded-md"  data-aos="fade-up">
+          <h1 className="text-3xl font-bold font-serif text-center mx-7">Login Account</h1>
+          <div className="flex justify-center m-3">
+            <Image src={Login} alt="" className='w-72 h-32' />
+          </div>
+          <form onSubmit={handleSubmit} className="font-serif">
+            <div className="mt-2">
              <label className="block font-bold mb-2">Email</label>
               <input
                 type="email"

@@ -57,10 +57,10 @@ function CompanyLogin() {
 
     return (  
       sessionStatus !== "authenticated" && (   
-        <div className="flex items-center justify-center min-h-screen bg-gray-100">
+        <div className="flex items-center justify-center min-h-screen bg-gray-100 font-serif">
           <form 
             onSubmit={handleSubmit} 
-            className="bg-white p-8 rounded-lg shadow-lg max-w-lg w-full space-y-6 pb-5">
+            className="bg-white p-8 rounded-lg shadow-lg max-w-lg w-full space-y-6 pb-5" data-aos="fade-up">
             <h1 className="text-3xl font-bold text-center">Welcome Back :)</h1>
             <p className="text-gray-600 text-base">To keep connected with us please login with your personal information by email address and password.</p>
             <div className="mb-3 mt-3">

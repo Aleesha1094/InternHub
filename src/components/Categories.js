@@ -33,7 +33,7 @@ function Categories() {
     return (
         <div className='py-16'>
             <div>
-                <p className='flex justify-center md:text-[40px] text-[35px] font-poppins font-semibold md:mb-12 mb-6'>Explore &nbsp; <span className='text-purple-700'>Categories</span></p>
+                <p className='flex justify-center md:text-[50px] text-[35px] font-poppins font-bold md:mb-12 mb-6'>Explore &nbsp; <span className='text-purple-700'>Categories</span></p>
             </div>
           
             {internships && internships.length > 0 ? (

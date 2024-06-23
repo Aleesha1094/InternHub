@@ -65,14 +65,14 @@ if (sessionStatus === "loading") {
 }
     return (
         sessionStatus !== "authenticated" && (
-          <div className="flex items-center justify-center min-h-screen bg-gray-100">
-          <div className="w-full max-w-lg m-9">
+          <div className="flex items-center justify-center min-h-screen bg-gray-100 font-serif">
+          <div className="w-full max-w-lg m-9" data-aos="fade-up">
             <form onSubmit={handleSubmit} className="bg-white p-8 rounded-lg shadow-lg space-y-5">
-              <h1 className="text-2xl font-bold text-center">Create Account</h1>
-              <div className="space-y-4 mt-6">
+              <h1 className="text-4xl font-bold text-center">Create Account</h1>
+              <div className="space-y-2 mt-6">
                   <label className='font-bold '>Company Name</label>
                   <input type="text"
-                    className="w-full px-4 py-2 mt-1 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"                   id="floatingName" placeholder="Company Name"
+                    className="w-full px-4 py-2 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"                   id="floatingName" placeholder="Company Name"
                    />
                 </div>
                 <div class="mb-3">

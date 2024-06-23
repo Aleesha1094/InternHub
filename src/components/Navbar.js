@@ -9,13 +9,6 @@ import Dropdown from './Dropdown'
 function Navbar() {
     const { data: session } = useSession();
 
-    // useEffect(() => {
-    //   fetch('/api/puppeteer')
-    //       .then(response => response.json())
-    //       .then(data => console.log(data.message))
-    //       .catch(error => console.error('Error scheduling scraping job:', error));
-    // }, []);
-
     const GetUserRole = () => {
       if (session) {
         if (session.user.role === 'admin') {
@@ -36,8 +29,8 @@ function Navbar() {
     const navbar = [
       { title: 'Home', url: "/" },
       { title: 'Internships', url: "/internships"  },
-      { title: 'Contact Us', url: "/contactus"  },
       { title: 'Internship Test', url: "/testportal"  },
+      { title: 'Contact Us', url: "/contactus"  },
   ]
 
   const dropdown1 = [

@@ -8,13 +8,13 @@ function AddInternship() {
     const [success, setSuccess] = useState(""); 
     const router = useRouter();
     const { data: session } = useSession();
-    const companyId = session.user.id;
 
     const isValidEmail = (contact_email) => {
     const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
     return emailRegex.test(contact_email);
     };
 
+    const companyId = session.user.id;
     const handleSubmit = async (e) => {
         e.preventDefault();
         const title = e.target[0].value;
@@ -47,7 +47,8 @@ function AddInternship() {
             }),
           });
           if (res.status === 500) {
-            setError(res.error);
+            const errorData = await res.json();
+            setError(errorData.message || 'Sever side error occurred');
           }
           if (res.status === 201) {
             setError("");
@@ -63,16 +64,16 @@ function AddInternship() {
       };
 
     return (  
-      <div className="container mx-auto p-10 bg-gray-50">
+      <div className="container mx-auto p-10 bg-purple-50">
         <h1 className="text-4xl text-center font-extrabold mb-6 text-purple-800">Add Internship</h1>
         <form onSubmit={handleSubmit} className="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-xl space-y-6">
           <div className="mb-6">
-            <label className="block px-1 font-semibold mb-2">Internship Title</label>
+            <label className="block font-bold mb-2">Internship Title</label>
             <input
-              type="title"
+              type="text"
               className="form-control w-full px-4 py-2 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:shadow-md"
               id="floatingInput"
-              placeholder="Title"
+              placeholder="Web Development, CS internship ..."
               required
             />
           </div>
@@ -82,7 +83,7 @@ function AddInternship() {
                   type="email"
                   className="form-control w-full px-4 py-2 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:shadow-md"
                   id="floatingInput"
-                  placeholder="Company Name"
+                  placeholder="Enter your contact email"
                   required
                 />
           </div>

@@ -18,8 +18,9 @@ function InternshipData() {
           const dataInternships = await responseInternships.json();
           const dataCInternships = await responseCInternships.json();
 
-          setInternships(dataInternships.Internshipss);
-          setCInternships(dataCInternships.Internshipss);
+          setInternships(Array.isArray(dataInternships.Internshipss) ? dataInternships.Internshipss : []);
+          setCInternships(Array.isArray(dataCInternships.data) ? dataCInternships.data : []);
+          console.log(dataCInternships)
         }  else {
             setError(response.error);
         }
@@ -35,13 +36,13 @@ function InternshipData() {
     setSelectedTitle(e.target.value.toLowerCase());
   };
 
-  const predefinedTitles = ["All", "Bank Internship", "Business Internship", "Textile Internship", "Web Development", "CS & SE Internship"];
+  const predefinedTitles = ["All", "Bank Internship", "Business Internship", "Textile Internship", "Web Development", "CS & SE Internship", "Marketing Internship" , "Data Science Internship" , "Human Resource"];
 
-  const filteredInternships = selectedTitle === "all"
-    ? internships
-    : internships.filter(internship => 
-        internship.title.toLowerCase().includes(selectedTitle)
-      );
+  const combinedInternships = [...internships, ...cinternships];
+
+  const filteredInternships = selectedTitle === 'all'
+    ? combinedInternships
+    : combinedInternships.filter(internship => internship.title === selectedTitle);
 
 
   return (
@@ -50,7 +51,6 @@ function InternshipData() {
       <div className="border-t-4 border-purple-800 py-1"></div>
       <h1 className="text-4xl font-bold text-center text-purple-800 my-4">INTERNSHIPS</h1>
       <div className="border-t-4 border-purple-800 mb-8"></div>
-      {/* {internships && internships.length > 0 ? ( */}
       <div className="flex justify-center mb-8">
           <select
             onChange={handleTitleFilter}
@@ -66,7 +66,6 @@ function InternshipData() {
         {filteredInternships && filteredInternships.length > 0 ? (
         <ul className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 gap-8 m-3">
           {filteredInternships.map((internship) => (
-          // {internships.map((internship) => (
             <li key={internship._id} className="bg-white rounded-lg shadow-md hover:shadow-2xl transition-shadow duration-300">
               <div className="p-6">
                 <h4 className="text-2xl font-bold text-purple-700 mb-2 text-center my-2">{internship.company_title}</h4>
@@ -76,9 +75,9 @@ function InternshipData() {
                 <p className="mb-2"><span className="font-bold">Eligibility Criteria:</span> {internship.eligibilityCriteria}</p>
                 <p className="mb-4 text-justify"><span className="font-bold">Description:</span> {internship.description}</p>
                 <div className="flex justify-center">
-                  <Link href={internship.url} target="_blank" rel="noopener noreferrer" className="px-6 py-2 bg-purple-700 text-white font-semibold rounded-lg hover:bg-purple-900 hover:shadow-lg hover:-translate-y-1 hover:scale-105">
+                  <a href={internship.url} target="_blank" rel="noopener noreferrer" className="px-6 py-2 bg-purple-700 text-white font-semibold rounded-lg hover:bg-purple-900 hover:shadow-lg hover:-translate-y-1 hover:scale-105">
                     Visit Official Page
-                  </Link>
+                  </a>
                 </div>
               </div>
             </li>
