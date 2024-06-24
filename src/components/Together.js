@@ -1,6 +1,5 @@
 import React from 'react';
 import Link from 'next/link';
-import cartoon from "./../../public/cartoon.jpg"
 
 const Together = () => {
   return (

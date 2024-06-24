@@ -16,7 +16,6 @@ export async function BankAlfalah(page) {
             company_title: "Bank Alfalah",
             title: "Bank Internship",
             url: window.location.href,
-            // detail: paragraphs[0].textContent.trim() || '',
             description: paragraphs[1].textContent.trim() || '',
             duration: duration.trim() || '8 to 2 Weeks',
             eligibilityCriteria: Array.from(eligibilityCriteria).map(li => li.textContent.trim()).join(', ') || ''

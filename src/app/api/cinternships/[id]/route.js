@@ -5,15 +5,10 @@ import Company_Internships from "@/models/Company_Internships";
 export async function PUT(request, { params }) {
     try {
       const { id } = params;
-      const { Title: title, Location: location, Description: description, C_url: c_url, Contact_email: contact_email, Duration: duration, eligibilityCriteria: eligibilityCriteria  } = await request.json();
+      const { Title: title, Location: location, Description: description, Url: url, Contact_email: contact_email, Duration: duration, eligibilityCriteria: eligibilityCriteria  } = await request.json();
       await connectDb();
-      const Company_Internships = await Company_Internships.findByIdAndUpdate(id, { title, location, description, c_url, contact_email, duration, eligibilityCriteria }, { new: true });
-  
-      if (!Company_Internships) {
-        console.error("Internship Not Found!");
-        return NextResponse.json({ error: "Internship Not Found!" }, { status: 404 });
-      }
-      return NextResponse.json({ message: "Internship Updated!", Company_Internships }, { status: 200 });
+      const UpdatedInternships = await Company_Internships.findByIdAndUpdate(id, { title, location, description, url, contact_email, duration, eligibilityCriteria }, { new: true });
+      return NextResponse.json({ message: "Internship Updated!", UpdatedInternships }, { status: 200 });
     } catch (error) {
       console.error("Error Updating Internship:", error);
       return NextResponse.json({ error: "Error Updating Internship!" }, { status: 500 });

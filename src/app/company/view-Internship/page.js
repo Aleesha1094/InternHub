@@ -73,7 +73,7 @@ function CompanyData() {
                   <p>
                     <span className="font-bold">URL:</span> 
                     <a href={internship.url} target="_blank" rel="noopener noreferrer" className="cursor-pointer text-purple-500 hover:underline ml-1 break-all whitespace-normal">
-                      {internship.c_url}
+                      {internship.url}
                     </a>
                   </p>
                   <div className="flex items-center justify-center space-x-2 sm:pt-9 pt-3">

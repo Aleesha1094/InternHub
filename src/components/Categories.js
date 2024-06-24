@@ -43,7 +43,7 @@ function Categories() {
           key={internship._id}
           className={`p-6 my-5 rounded-lg shadow-xl hover:shadow-2xl transition-shadow duration-300 ${
             index % 3 === 0
-              ? 'hover:bg-purple-100'
+              ? 'bg-gray-50 hover:bg-purple-100'
               : index % 3 === 1
               ? 'bg-purple-50 hover:bg-purple-100'
               : 'bg-purple-100 hover:bg-purple-200'
@@ -82,11 +82,11 @@ function Categories() {
             <Together/>
             <Test/>
             <div className='mt-16'>
-                <div className='md:flex justify-center sm:text-center' data-aos="fade-right">
+                <div className='md:flex justify-center text-center' data-aos="fade-right">
                     <p className='md:text-[48px] text-[25px] text-[#1E1E1E] font-poppins font-semibold tracking-tight'>Are You Ready To Start <br /><span className='md:pl-20 mt-0'>Your Internship</span></p>
                 </div>
                 <div className='flex justify-center mt-8'>
-                    <div className="flex items-center shadow-xl rounded-lg p-2 md:w-[300px]">
+                    <div className="flex items-center shadow-xl rounded-lg p-2 w-[300px]">
                         <button href='/internships' className="animate-bounce px-5 text-semibold ml-9 bg-purple-600 text-white p-2 rounded-lg hover:bg-purple-800 md:block">
                             Start your career today!
                         </button>

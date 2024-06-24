@@ -30,7 +30,7 @@ import Stealth from "puppeteer-extra-plugin-stealth";
 import { ScrapeWebsites } from '@/components/Scraper/ScraperModules';
 
 puppeteer.use(Stealth());
-export async function SaveAndScrape() {
+export async function GET() {
     let browser;
     try {
         browser = await puppeteer.launch({

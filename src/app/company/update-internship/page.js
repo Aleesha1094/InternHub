@@ -16,7 +16,6 @@ function UpdateInternship() {
             const res = await fetch(`/api/cinternships/${id}`);
             const data = await res.json();
             setInternship(data.Company_Internshipss);
-            console.log(data.Company_Internshipss);
           } catch (error) {
             console.error("Error fetching internship data:", error);
             setError("Error fetching internship data!");
@@ -28,7 +27,7 @@ function UpdateInternship() {
     if (id) {
         fetchInternship();
     }
-}, [id, router]);
+}, [id]);
 
     const isValidEmail = (contact_email) => {
         const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
@@ -40,7 +39,7 @@ function UpdateInternship() {
         const Title = e.target[0].value;
         const Location = e.target[2].value;
         const Description = e.target[6].value;
-        const C_url = e.target[4].value;
+        const Url = e.target[4].value;
         const Contact_email = e.target[1].value;
         const Duration = e.target[5].value;
         const EligibilityCriteria = e.target[3].value;
@@ -51,7 +50,7 @@ function UpdateInternship() {
         }
       
         try {
-          const res = await fetch(`/api/cinternships/${internship.id}`, { 
+          const res = await fetch(`/api/cinternships/${id}`, { 
             method: "PUT", 
             headers: {
               "Content-Type": "application/json",
@@ -61,7 +60,7 @@ function UpdateInternship() {
                 Location,
                 Description,
                 EligibilityCriteria,
-                C_url,
+                Url,
                 Contact_email,
                 Duration
             }),
@@ -70,14 +69,11 @@ function UpdateInternship() {
           if (res.status === 500) {
             setError(errorData.error);
           }
-          if (res.status === 404) {
-            setError(errorData.error);
-          }
           if (res.status === 200) { 
             setError("");
             setSuccess("Internship Updated Successfully");
             setTimeout(() => {
-            router.push('/admin/viewinternship');
+            router.push('/company/view-Internship');
             }, 1500)  
           }
         } catch (error) {
@@ -145,7 +141,7 @@ function UpdateInternship() {
             className="w-full px-4 py-2 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:shadow-md focus:bg-purple-100"
             id="floatingInput"
             placeholder="Your website URL"
-            defaultValue={internship.c_url || ""} 
+            defaultValue={internship.url || ""} 
           />
         </div>
         <div className="mb-4">

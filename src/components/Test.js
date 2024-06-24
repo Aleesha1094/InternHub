@@ -23,7 +23,7 @@ const Test = () => {
       <div className="p-5 w-full">
         <h1 className="text-center text-5xl font-bold mb-12">Internship Test</h1>
         <div className="flex items-center justify-center">      
-        <div className="grid sm:grid-cols-2 grid-cols-1 gap-20 w-9/12">
+        <div className="grid sm:grid-cols-2 grid-cols-1 sm:gap-20 gap-10 w-9/12">
           <div className='grid grid-rows-1 gap-4'>
             <Link href="/testportal">
             <div className=" bg-purple-400 text-white rounded-xl p-4 flex items-center justify-center hover:-translate-y-1 hover:scale-103" data-aos="fade-up">
@@ -51,7 +51,7 @@ const Test = () => {
             </div>  
             </Link>
           </div>
-          <div className="text-xl leading-relaxed text-justify text-black-500">
+          <div className="text-xl leading-relaxed sm:text-justify text-center text-black-500">
             Welcome to our Test Module! This platform is designed to help students practice and prepare for internship interviews and assessments. 
             <div className='hidden lg:block'>
               By taking these quizzes, you can enhance your knowledge, identify your strengths, and work on areas that need improvement. Get started now to boost your confidence and ace your upcoming internships!

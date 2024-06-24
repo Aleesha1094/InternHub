@@ -15,12 +15,13 @@ function AddInternship() {
     };
 
     const companyId = session.user.id;
+    const company_title = session.user.username;
     const handleSubmit = async (e) => {
         e.preventDefault();
         const title = e.target[0].value;
         const location = e.target[2].value;
         const description = e.target[6].value;
-        const c_url = e.target[4].value;
+        const url = e.target[4].value;
         const contact_email = e.target[1].value;
         const duration = e.target[5].value;
         const eligibilityCriteria = e.target[3].value;
@@ -37,11 +38,12 @@ function AddInternship() {
             },
             body: JSON.stringify({
               companyId,
+              company_title,
               title,
               location,
               description,
               eligibilityCriteria,
-              c_url,
+              url,
               contact_email,
               duration
             }),
@@ -52,6 +54,7 @@ function AddInternship() {
           }
           if (res.status === 201) {
             setError("");
+            console.log()
             setSuccess("Internship Added Successfully");            
             setTimeout(() => {
               router.push('/company')
@@ -110,7 +113,7 @@ function AddInternship() {
           <div className="mb-4">
             <label className="font-bold mb-2">Website URL</label>
             <input
-              type="c_url"
+              type="url"
               className="form-control w-full px-4 py-2 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:shadow-md"
               id="floatingInput"
               placeholder="Company Website URL"

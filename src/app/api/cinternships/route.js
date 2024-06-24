@@ -4,9 +4,9 @@ import { NextResponse } from "next/server";
 
 export async function POST(request) {
   try {
-    const {  companyId,title, location, description, c_url, contact_email, duration, eligibilityCriteria } = await request.json();
+    const {  companyId,company_title, title, location, description, url, contact_email, duration, eligibilityCriteria } = await request.json();
     await connectDb();
-    await Company_Internships.create({ companyId,title, location, description, c_url, contact_email, duration, eligibilityCriteria  });
+    await Company_Internships.create({ companyId,company_title, title, location, description, url, contact_email, duration, eligibilityCriteria  });
     return NextResponse.json({ message: "Internship Added" }, { status: 201 });
   } catch (error) {
     console.error("Error adding internship:", error);

@@ -14,7 +14,7 @@ export async function PUT(request, { params }) {
       return NextResponse.json({ error: "Error Updating Internship!" }, { status: 500 });
     }
   }
-
+  
 export async function GET(request, { params }) {
   try {
     const { id } = params;

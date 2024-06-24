@@ -10,6 +10,10 @@ const CInternshipSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    company_title : {
+        type: String,
+        required: true
+    },
     location : {
         type: String,
         required: true
@@ -22,7 +26,7 @@ const CInternshipSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    c_url : {
+    url : {
         type: String,
         required: true
     }, 

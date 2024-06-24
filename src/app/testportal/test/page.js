@@ -165,7 +165,7 @@ const TestPortal = () => {
               className="sm:px-6 px-0 py-2 sm:ml-5 ml-3 bg-purple-800 text-white font-semibold rounded-lg hover:bg-purple-900 hover:shadow-lg hover:-translate-y-1 hover:scale-105"
               onClick={showWrongMCQs}
             >
-              Show Answers
+              Show Wrong Answers
             </button>
             <Link href="/internships"
               className="px-6 py-2 sm:ml-5 ml-3 sm:m-0 m-3 bg-purple-800 text-white font-semibold rounded-lg hover:bg-purple-900 hover:shadow-lg hover:-translate-y-1 hover:scale-105"

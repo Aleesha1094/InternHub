@@ -34,12 +34,18 @@ function InternshipData() {
     setSelectedTitle(e.target.value.toLowerCase());
   };
 
+  const [expandedIndex, setExpandedIndex] = useState(-1); // Track expanded internship index
+
+  const handleExpand = (index) => {
+    setExpandedIndex(index === expandedIndex ? -1 : index); // Toggle expand state
+  };
+
   const predefinedTitles = [
     { value: "all", label: "All" },
     { value: "Bank Internship", label: "Bank Internship" },
     { value: "Textile Internship", label: "Textile Internship" },
     { value: "Web Development", label: "Web Development" },
-    { value: "CS-SE Internship", label: "CS & SE Internship" },
+    { value: "CS & SE Internship", label: "CS & SE Internship" },
     { value: "Marketing Internship", label: "Marketing Internship" },
     { value: "Data Science Internship", label: "Data Science Internship" },
     { value: "Human Resource", label: "Human Resource" },
@@ -72,15 +78,45 @@ function InternshipData() {
         </div>
         {filteredInternships && filteredInternships.length > 0 ? (
           <ul className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 gap-8 m-3">
-            {filteredInternships.map((internship) => (
+            {filteredInternships.map((internship, index) => (
               <li key={internship._id} className="bg-white rounded-lg shadow-md hover:shadow-2xl transition-shadow duration-300">
                 <div className="p-6">
                   <h4 className="text-2xl font-bold text-purple-700 mb-2 text-center my-2">{internship.company_title}</h4>
                   <p className="mb-2"><span className="font-bold">Title:</span> {internship.title}</p>
                   <p className="mb-2"><span className="font-bold">Location:</span> {internship.location}</p>
                   <p className="mb-2"><span className="font-bold">Duration:</span> {internship.duration}</p>
-                  <p className="mb-2"><span className="font-bold">Eligibility Criteria:</span> {internship.eligibilityCriteria}</p>
-                  <p className="mb-4 text-justify"><span className="font-bold">Description:</span> {internship.description}</p>
+                  {internship.contact_email && (
+                    <p className="mb-2">
+                      <span className="font-bold">Email:</span> {internship.contact_email}
+                    </p>
+                  )}                  
+                  <p className="mb-2">
+                    <span className="font-bold">Eligibility Criteria:</span>{' '}
+                    {expandedIndex === index ? (
+                      <>
+                        {internship.eligibilityCriteria}{' '}
+                        <button
+                          className="text-blue-500 underline focus:outline-none"
+                          onClick={() => handleExpand(index)}
+                        >
+                          View Less
+                        </button>
+                      </>
+                    ) : (
+                      <>
+                        {internship.eligibilityCriteria.slice(0, 300)}
+                        {internship.eligibilityCriteria.length > 300 && (
+                          <button
+                            className="text-purple-700 mx-2 text-base font-bold underline focus:outline-none"
+                            onClick={() => handleExpand(index)}
+                          >
+                            View More
+                          </button>
+                        )}
+                      </>
+                    )}
+                  </p>
+            <p className="mb-4 text-justify"><span className="font-bold">Description:</span> {internship.description}</p>
                   <div className="flex justify-center">
                     <a href={internship.url} target="_blank" rel="noopener noreferrer" className="px-6 py-2 bg-purple-700 text-white font-semibold rounded-lg hover:bg-purple-900 hover:shadow-lg hover:-translate-y-1 hover:scale-105">
                       Visit Official Page
@@ -91,7 +127,7 @@ function InternshipData() {
             ))}
           </ul>
         ) : (
-          <p className="text-gray-700 font-bold text-center m-9 text-4xl">Loading...</p>
+          <p className="text-gray-700 font-bold text-center m-9 text-4xl">No Internship Available</p>
         )}
         {error && <p className="text-center text-red-500 mt-4">{error}</p>}
       </div>
