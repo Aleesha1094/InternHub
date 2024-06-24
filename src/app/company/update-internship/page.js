@@ -28,7 +28,7 @@ function UpdateInternship() {
     if (id) {
         fetchInternship();
     }
-}, [id]);
+}, [id, router]);
 
     const isValidEmail = (contact_email) => {
         const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;

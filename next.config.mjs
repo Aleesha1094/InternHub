@@ -6,6 +6,7 @@ const nextConfig = {
           'puppeteer-extra-plugin-stealth',
         ],
     },
+    staticPageGenerationTimeout: 300,
 };
 
 export default nextConfig;
