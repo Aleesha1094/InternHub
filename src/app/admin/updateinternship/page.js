@@ -28,7 +28,7 @@ function UpdateInternship() {
         if (id) {
             fetchInternship();
         }
-    }, [id]);
+    }, [id,router]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();

@@ -14,7 +14,7 @@ function AdminLogin() {
     if (sessionStatus === "authenticated") {
         router.replace('/admin')
     }
-  }, [session, router]);
+  }, [session, router, sessionStatus]);
 
   const isValidEmail = (email) => {
     const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;

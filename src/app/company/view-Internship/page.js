@@ -35,7 +35,7 @@ function CompanyData() {
   {
     router.replace('/company');
   }
-  }, [session]);
+  }, [session, router, status]);
   
   const handleDelete = async (id) => {
     try {
