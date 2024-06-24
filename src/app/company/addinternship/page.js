@@ -64,8 +64,8 @@ function AddInternship() {
       };
 
     return (  
-      <div className="container mx-auto p-10 bg-purple-50">
-        <h1 className="text-4xl text-center font-extrabold mb-6 text-purple-800">Add Internship</h1>
+      <div className="container mx-auto sm:p-10 p-3 bg-purple-50">
+        <h1 className="text-4xl text-center font-extrabold m-6 text-purple-800">Add Internship</h1>
         <form onSubmit={handleSubmit} className="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-xl space-y-6">
           <div className="mb-6">
             <label className="block font-bold mb-2">Internship Title</label>

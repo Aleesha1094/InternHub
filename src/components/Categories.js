@@ -37,7 +37,7 @@ function Categories() {
             </div>
           
             {internships && internships.length > 0 ? (
-            <div className='md:px-32 px-20 grid md:grid-cols-3 gap-8'>
+            <div className='md:px-32 sm:px-20 px-10 grid md:grid-cols-3 gap-8'>
               {internships.slice(0,3).map((internship, index) => (
           <div
           key={internship._id}
@@ -77,28 +77,23 @@ function Categories() {
                 <p className="text-center text-2xl text-gray-600">Loading...</p>
             )}
             <div className='text-center my-9 animate-bounce mb-20'>
-            <Link href="/internships" className="ml-9 text-lg font-semibold underline text-purple-500">Explore Internships →</Link>
+            <Link href="/internships" className="text-lg font-semibold underline text-purple-500">Explore Internships →</Link>
             </div>
             <Together/>
             <Test/>
-            <div className='md:px-32 px-10 mt-16'>
-                <div className='md:flex justify-center sm:text-center' data-aos="fade-left">
+            <div className='mt-16'>
+                <div className='md:flex justify-center sm:text-center' data-aos="fade-right">
                     <p className='md:text-[48px] text-[25px] text-[#1E1E1E] font-poppins font-semibold tracking-tight'>Are You Ready To Start <br /><span className='md:pl-20 mt-0'>Your Internship</span></p>
                 </div>
-
                 <div className='flex justify-center mt-8'>
                     <div className="flex items-center shadow-xl rounded-lg p-2 md:w-[300px]">
                         <button href='/internships' className="animate-bounce px-5 text-semibold ml-9 bg-purple-600 text-white p-2 rounded-lg hover:bg-purple-800 md:block">
                             Start your career today!
                         </button>
-                        {/* <button href='/internships' className="animate-bounce ml-2 bg-purple-600 text-white p-2 rounded-lg hover:bg-purple-800 md:hidden">
-                            Start
-                        </button> */}
                     </div>
                 </div>
-
             </div>
-        </div>
+    </div>
     )
 }
 

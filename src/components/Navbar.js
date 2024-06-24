@@ -77,31 +77,31 @@ const dropdown2 = [
           </div>
         </div>
         <ul className='h-full w-full font-bold text-center pt-12'>
-          <li className='text-2xl py-4'>
+          <li className='text-2xl py-4 border-b border-purple-700'>
             <a href="/" className='text-purple-800 hover:text-black hover:border-b-2 border-transparent hover:border-purple-800'>Home</a>
           </li>
-          <li className='text-2xl py-4'>
+          <li className='text-2xl py-4 border-b border-purple-700'>
             <a href="/internships" className='text-purple-800 hover:text-black hover:border-b-2 border-transparent hover:border-purple-800'>Internships</a>
           </li>
-          <li className='text-2xl py-4'>
+          <li className='text-2xl py-4 border-b border-purple-700'>
             <a href="/testportal" className='text-purple-800 hover:text-black hover:border-b-2 border-transparent hover:border-purple-800'>Internship Test</a>
           </li>
-          <li className='text-2xl py-4'>
+          <li className='text-2xl py-4 border-b border-purple-700'>
             <a href="/contactus" className='text-purple-800 hover:text-black hover:border-b-2 border-transparent hover:border-purple-800'>Contact Us</a>
           </li>
           {!session ? (
           <>
-            <li className='text-2xl py-4'>
+            <li className='text-2xl py-4 border-b border-purple-700'>
               <a href="/adminlogin" className='text-purple-800 hover:text-black hover:border-b-2 border-transparent hover:border-purple-800'>Admin</a>
             </li>
-            <li className='text-2xl py-4'>
+            <li className='text-2xl py-4 border-b border-purple-700'>
               <a href="/register" className='text-purple-800 hover:text-black hover:border-b-2 border-transparent hover:border-purple-800'>Company</a>
             </li>
           </>
           ) : (
           <>
-           <li className='text-2xl py-4'>
-              <Link href={GetUserRole()} className='text-purple-800 hover:text-black hover:border-b-2 border-transparent hover:border-purple-800'>Profile</Link>
+           <li className='text-2xl py-4 border-b border-purple-700 mb-3'>
+              <a href={GetUserRole()} className='text-purple-800 hover:text-black hover:border-b-2 border-transparent hover:border-purple-800'>Profile</a>
            </li>
             <Dropdown name={session.user?.username} links={dropdown2} />
           </>

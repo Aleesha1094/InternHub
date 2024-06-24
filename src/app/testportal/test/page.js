@@ -112,7 +112,7 @@ const TestPortal = () => {
   };
 
   return (
-    <div className="container mx-auto p-9 bg-gray-100 font-sans">
+    <div className="container mx-auto sm:p-9 p-4 bg-gray-100 font-sans">
       <h1 className="text-center text-5xl my-7 font-bold cursor-default">Lets Start Quiz</h1>
       {!showResult ? (
         <div className="max-w-lg mx-auto p-6 bg-white rounded-lg shadow-lg transition-colors duration-300">
@@ -154,32 +154,32 @@ const TestPortal = () => {
           <p className="text-lg text-purple-800">Total Questions : <span className="font-bold text-black px-3">{shuffledQuestions.length}</span></p>
           <p className="text-lg text-purple-800">Correct Answers : <span className="font-bold text-black px-3">{result.correctAnswers}</span></p>
           <p className="text-lg text-purple-800">Wrong Answers : <span className="font-bold text-black px-3">{result.wrongAnswers}</span></p>
-          <div className='flex justify-center mt-5'>
+          <div className='flex justify-center text-center mt-5 sm:flex-row flex-col'>
             <button
-              className="px-6 py-2 bg-purple-800 text-white font-semibold rounded-lg hover:bg-purple-900 hover:shadow-lg hover:-translate-y-1 hover:scale-105"
+              className="px-6 py-2 sm:m-0 m-3 bg-purple-800 text-white font-semibold rounded-lg hover:bg-purple-900 hover:shadow-lg hover:-translate-y-1 hover:scale-105"
               onClick={restartQuiz}
             >
               Restart
             </button>
             <button
-              className="px-6 py-2 ml-5 bg-purple-800 text-white font-semibold rounded-lg hover:bg-purple-900 hover:shadow-lg hover:-translate-y-1 hover:scale-105"
+              className="sm:px-6 px-0 py-2 sm:ml-5 ml-3 bg-purple-800 text-white font-semibold rounded-lg hover:bg-purple-900 hover:shadow-lg hover:-translate-y-1 hover:scale-105"
               onClick={showWrongMCQs}
             >
-              Show Wrong Answers
+              Show Answers
             </button>
             <Link href="/internships"
-              className="px-6 py-2 ml-5 bg-purple-800 text-white font-semibold rounded-lg hover:bg-purple-900 hover:shadow-lg hover:-translate-y-1 hover:scale-105"
+              className="px-6 py-2 sm:ml-5 ml-3 sm:m-0 m-3 bg-purple-800 text-white font-semibold rounded-lg hover:bg-purple-900 hover:shadow-lg hover:-translate-y-1 hover:scale-105"
             >Cancel</Link>
           </div>
         </div>
       )}
       {showWrongAnswers && (
-        <div className="max-w-3xl mx-auto p-14 bg-white rounded-lg shadow-lg transition-colors duration-300 mt-14">
+        <div className="max-w-3xl mx-auto sm:p-14 p-5 bg-white rounded-lg shadow-lg transition-colors duration-300 mt-14">
           <h3 className="text-3xl font-bold text-center p-5 text-red-700 border-y-2 border-purple-800 mb-10">TEST EVALUATION</h3>
           {selectedAnswers
             .filter(answer => answer.selected !== answer.answers.indexOf(answer.correct))
             .map((answer, index) => (
-              <div key={index} className="mb-4 p-1">
+              <div key={index} className="mb-4 sm:p-1 p-0">
                 <h4 className="text-lg font-bold text-purple-800">Q: {answer.question}</h4>
                 <p className="text-sm text-red-600 pl-6 mt-2">Your Answer: {answer.answers[answer.selected]}</p>
                 <p className="text-sm text-green-600 pl-6">Correct Answer: {answer.correct}</p>

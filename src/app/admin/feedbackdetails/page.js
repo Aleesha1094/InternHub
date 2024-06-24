@@ -24,7 +24,7 @@ useEffect(() => {
   }, []);
 
   return (
-      <div className="min-h-screen bg-gray-100 py-20">
+      <div className="min-h-screen bg-gray-100 sm:py-20 py-10">
         <div className="container mx-auto p-4">
           <div className="border-t-4 border-purple-800 py-1"></div>
             <h1 className="text-2xl font-bold text-center text-purple-800 cursor-default p-3">STUDENT FEEDBACKS</h1>
@@ -32,10 +32,10 @@ useEffect(() => {
               {feedbacks && feedbacks.length > 0 ? (
                 <ul className="space-y-6">
                   {feedbacks && feedbacks.map((feedback) => (
-                     <div key={feedback._id} className="p-6 bg-white rounded-lg shadow-md hover:shadow-2xl transition-shadow duration-300">
+                     <div key={feedback._id} className="sm:p-6 p-3 bg-white rounded-lg shadow-md hover:shadow-2xl transition-shadow duration-300">
                        <li className="mb-2 text-center">
-                          <h4 className="text-3xl font-bold text-purple-700 cursor-default">
-                            <span className="px-9 text-sm text-black">Feedback from : </span>
+                          <h4 className="sm:text-3xl text-xl font-bold text-purple-700 cursor-default">
+                            <span className="sm:px-9 px-2 text-sm text-black">Feedback from : </span>
                             {feedback.user_name}
                           </h4>
                        </li>

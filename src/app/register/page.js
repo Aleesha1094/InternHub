@@ -48,7 +48,7 @@ const handleSubmit = async (e) => {
       }),
     });
     if (res.status === 400) {
-      setError(res.message);
+      setError("Email is Already in Use");
     }
     if (res.status === 201) {
       setError(res.message);

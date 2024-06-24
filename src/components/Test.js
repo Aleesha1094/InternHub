@@ -1,9 +1,5 @@
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
-import Admin1 from "./../../public/Admin1.jpeg";
-import Admin2 from "./../../public/Admin2.jpeg";
-import Admin3 from "./../../public/Admin3.jpeg";
 
 const Test = () => {
   return (

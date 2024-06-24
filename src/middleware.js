@@ -5,13 +5,17 @@ export async function middleware(req) {
 
   const { pathname } = req.nextUrl;
 
+  if (pathname === "/api/cron") {
+    return NextResponse.next();
+  }
+
   if (pathname === "/companylogin" || pathname === "/adminlogin" || pathname === "/register") {
     return NextResponse.next();
   }
 
   const token = await getToken({ req });
 
-  const companyProtectedRoutes = ["/company", "/company/view-Internship", "/company/addinternship", "/company/update-internship"];
+  const companyProtectedRoutes = ["/company", "/company/view-Internship", "/company/addinternship", "/company/update-internship", "/resetpassword/[token]"];
   const adminProtectedRoutes = ["/admin", "/admin/viewinternship", "/admin/addinternship", "/admin/updateinternship", "/admin/companydetails", "/admin/feedbackdetails"];
 
   if (!token) {

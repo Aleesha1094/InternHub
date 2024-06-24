@@ -15,7 +15,7 @@ function Dropdown({name, links}) {
     };
 
   return (
-    <div className="relative inline-block text-left bg-white">
+    <div className="relative inline-block text-left">
       <div> 
         <button
           type="button"

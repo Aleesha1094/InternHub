@@ -5,7 +5,7 @@ import Link from "next/link";
 function InternshipData() {
   const [error, setError] = useState("");
   const [internships, setInternships] = useState([]); 
-  const [selectedTitle, setSelectedTitle] = useState("All");
+  const [selectedTitle, setSelectedTitle] = useState("all");
 
   useEffect(() => {
     async function fetchInternships() {
@@ -41,16 +41,20 @@ function InternshipData() {
     }
   }
 
-  const handleTitleFilter = (title) => {
-    setSelectedTitle(title.toLowerCase());
+  const handleTitleFilter = (e) => {
+    setSelectedTitle(e.target.value.toLowerCase());
   };
-  
+
+  const predefinedTitles = [
+    { value: "all", label: "All" },
+    { value: "Bank Internship", label: "Bank Internship" },
+    { value: "Textile Internship", label: "Textile Internship" },
+    { value: "CS-SE Internship", label: "CS & SE Internship" },
+  ];
 
   const filteredInternships = selectedTitle === "all"
   ? internships
-  : internships.filter(internship => 
-      internship.title.toLowerCase().includes(selectedTitle.toLowerCase())
-    );
+  : internships.filter(internship => internship.title.toLowerCase() === selectedTitle);
 
   return (
     <div className="min-h-screen bg-gray-100 py-20">
@@ -58,25 +62,23 @@ function InternshipData() {
         <div className="border-t-4 border-purple-800 py-1"></div>
         <h1 className="text-4xl font-bold text-center text-purple-800 cursor-default p-2">INTERNSHIPS</h1>
         <div className="border-t-4 border-purple-800 mb-8"></div>
-        <div>
-        <label htmlFor="titleFilter" className="px-16 py3 font-bold" >Filter by Title:</label>
-        <select
-          className="rounded-lg p-1 py-1.5  cursor-pointer"
-          id="titleFilter"
-          onChange={(e) => handleTitleFilter(e.target.value)}
-          value={selectedTitle}>
-          <option value="all">All Internships</option>
-          <option value="Telenor Pakistan">App Development</option>
-          <option value="Web Development">Web Development</option>
-          <option value="Bank Internship">Banking</option>
-          <option value="Textile Internship">Textile Engineering</option>          
-        </select>
+        <div className="flex justify-center mb-8">
+          <select
+            onChange={handleTitleFilter}
+            className="p-2 border rounded"
+            value={selectedTitle}
+          >
+            {predefinedTitles.map((title, index) => (
+              <option key={index} value={title.value.toLowerCase()}>
+                {title.label}
+              </option>
+            ))}
+          </select>
         </div>
-        {internships && internships.length > 0 ? (
+        {filteredInternships && filteredInternships.length > 0 ? (
           <ul className="space-y-12 mt-9">
-            {/* {filteredInternships.map((internship) => ( */}
-             {internships.map((internship) => (
-              <div key={internship._id} className="p-6 mx-24 bg-white rounded-lg shadow-md hover:shadow-2xl transition-shadow">
+            {filteredInternships.map((internship) => (
+              <div key={internship._id} className="p-6 sm:mx-24 mx-2 bg-white rounded-lg shadow-md hover:shadow-2xl transition-shadow">
                 <li className="mb-2">
                   <h4 className="flex items-center justify-center text-2xl font-bold text-purple-700 cursor-default">{internship.company_title}</h4>
                 </li>
@@ -92,10 +94,10 @@ function InternshipData() {
                       {internship.url}
                     </Link>
                   </p>
-                  <div className="flex items-center justify-center space-x-4 pt-9">
+                  <div className="flex items-center justify-center space-x-4 sm:pt-9 pt-4">
                     <button
                       onClick={() => handleDelete(internship._id)}
-                      className="bg-purple-700 font-semibold text-white py-2 px-4 mr-9 rounded hover:bg-pink-700 hover:shadow-lg hover:scale-105"
+                      className="bg-purple-700 font-semibold text-white py-2 px-4 sm:mr-9 mr-2 rounded hover:bg-pink-700 hover:shadow-lg hover:scale-105"
                     >
                       Delete Internship
                     </button>
