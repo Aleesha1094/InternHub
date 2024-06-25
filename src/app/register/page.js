@@ -7,6 +7,7 @@ import Link from 'next/link';
 function RegisterCompany() {
 const [error, setError] = useState("");
 const router = useRouter();
+const [success, setSuccess] = useState(""); 
 const { data: session, status: sessionStatus } = useSession();
 
 useEffect(() => {
@@ -51,8 +52,11 @@ const handleSubmit = async (e) => {
       setError("Email is Already in Use");
     }
     if (res.status === 201) {
-      setError(res.message);
-      router.push('/companylogin')
+      setError("");
+      setSuccess("Account Created Successfully"); 
+      setTimeout(() => {
+      router.push('/companylogin');
+      }, 1500)  
     }
   } catch (error) {
     setError("Error, Try Again!");
@@ -94,6 +98,7 @@ if (sessionStatus === "loading") {
                   />
                 </div>  
                 {error && <p className="text-center text-red-500 mt-4">{error}</p>}
+                {success && <p className="text-center text-green-500 font-bold text-base">{success}</p>}        
                 <div className="flex justify-center">
                 <button
                   type="submit"
@@ -102,7 +107,7 @@ if (sessionStatus === "loading") {
                 </button>
               </div> 
               <div className= "text-center mt-3">                 
-                <Link href="/companylogin" className="inline-block text-center text-blue-500 underline">Login with Existing Account</Link>
+                <Link href="/companylogin" className="inline-block text-center text-purple-600 underline">Login with Existing Account</Link>
               </div>
             </form>
           </div>

@@ -76,17 +76,16 @@ function ResetPassword ({params}) {
       }
     };
 
-
     if (sessionStatus === "loading" || !verified) {
       return <h1 className="text-gray-700 font-bold text-center m-9 text-4xl">Loading...</h1>;
       }
   
   return (  
     sessionStatus !== "authenticated" && (  
-      <div className="flex items-center justify-center min-h-screen bg-gray-100">
+      <div className="flex items-center justify-center sm:p-14 p-5 bg-gray-100">
       <div className="w-full max-w-lg">
         <form onSubmit={handleSubmit} className="bg-white p-8 rounded-lg shadow-lg">
-          <h1 className="text-2xl font-bold text-center">Reset Password</h1>
+          <h1 className="text-3xl font-bold text-purple-800 text-center">Reset Password</h1>
           <div className="space-y-4 mt-6 mx-5">
             <div>
               <label htmlFor="password" className="block font-bold">Password:</label>

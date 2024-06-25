@@ -32,7 +32,7 @@ const Test = () => {
   };
 
   return (
-    <div className="container flex flex-col justify-center items-center min-h-screen py-8 bg-gray-100">
+    <div className="container flex flex-col justify-center items-center min-h-screen sm:py-14 py-7 bg-gray-100">
       <div className="max-w-4xl mx-auto p-8 bg-purple-100 rounded-3xl shadow-md" data-aos="fade-up">
         <div className="grid sm:grid-cols-3 grid-cols-1 gap-4">
           <div className="bg-white p-4 rounded-2xl shadow-md">

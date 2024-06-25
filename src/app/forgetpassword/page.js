@@ -7,6 +7,7 @@ import Link from "next/link";
 function ForgetPassword() {
     const [error, setError] = useState("");
     const router = useRouter();
+    const [success, setSuccess] = useState(""); 
     const { data: session, status: sessionStatus } = useSession();
 
     useEffect(() => {
@@ -42,7 +43,8 @@ function ForgetPassword() {
           setError("User with this Email is not Registered!");
         }
         if (res.status === 200) {
-          setError("Email Sended Successfully");
+          setError("");
+          setSuccess("Email Sended Successfully"); 
           setTimeout(() => {
           router.push('/companylogin')
           }, 1500)
@@ -59,10 +61,10 @@ function ForgetPassword() {
 
     return (  
       sessionStatus !== "authenticated" && (   
-      <div className="flex items-center justify-center min-h-screen bg-gray-100">
+      <div className="flex items-center justify-center sm:p-14 p-5 bg-gray-100">
       <div className="w-full max-w-lg">
         <form onSubmit={handleSubmit} className="bg-white p-8 rounded-lg shadow-lg">
-          <h1 className="text-2xl font-bold text-center">Forget Password</h1>
+          <h1 className="text-3xl pb-2 text-purple-800 font-bold text-center">Forget Password</h1>
           <p className="text-gray-600 text-base text-center m-3">First check Spam folder of your account if mail not found after submiting form otherwise Try Again!</p>
           <div className="space-y-4 mt-6 mx-5">
             <div>
@@ -76,6 +78,7 @@ function ForgetPassword() {
               />
             </div>
             {error && <p className="text-center text-red-500 mt-4">{error}</p>}
+            {success && <p className="text-center text-green-500 font-bold text-base">{success}</p>}        
             </div>
           <div className="flex justify-center mt-6">
             <button

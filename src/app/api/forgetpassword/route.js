@@ -18,13 +18,26 @@ export async function POST(request) {
     .update(resetToken)
     .digest('hex');
 
-    const passwordResetExpires = Date.now() + 3600000;
+    const passwordResetExpires = Date.now() + 1200000;
     existingUser.resetToken = passwordResetToken;
     existingUser.resetTokenExpiry = passwordResetExpires;
 
-    const resetUrl = `https://futureinterns.vercel.app//resetpassword/${resetToken}`;
+    const resetUrl = `futureinterns.vercel.app/resetpassword/${resetToken}`;
 
-    const body = "Reset Password by clicking on following URL: " + resetUrl;
+    // const body = "Reset Password by clicking on following URL: " + resetUrl;
+    const body = `
+      Hi there,
+
+      We received a request to reset your password. Please click the link below to reset your password:
+
+      ${resetUrl}
+      
+      For your security, this link will expire after 20 minutes. After 20 minutes, you will need to request a new password reset.
+      If you did not request a password reset, please ignore this email or contact support if you have questions.
+
+      Thanks,
+      Future Interns Team
+      `;
     const msg = {
       to: email,
       from: '<aleesharustam@gmail.com>',

@@ -54,7 +54,7 @@ function ContactUs() {
       };
 
 return (     
-  <div className="container mx-auto sm:min-h-screen bg-gray-100 pt-6 py-9">
+  <div className="container mx-auto sm:min-h-screen bg-gray-100 sm:p-14 p-2">
     <div className="flex justify-center">
     <div className="sm:mt-0 mt-32">
       <div class="mix-blend-multiply sm:w-24 sm:h-24 w-10 h-10 bg-purple-800 rounded-full" data-aos="fade-right" data-aos-duration='1500'></div>
@@ -63,11 +63,11 @@ return (
       <div class="mix-blend-multiply sm:w-24 sm:h-24 w-10 h-10 bg-purple-500 rounded-full"data-aos="fade-right" data-aos-duration='2500'></div>
       <div class="mix-blend-multiply sm:w-24 sm:h-24 w-10 h-10 bg-purple-400 rounded-full"data-aos="fade-right" data-aos-duration='2700'></div>
     </div>
-      <div className="w-full max-w-xl shadow-lg">
+      <div className="w-full max-w-xl shadow-lg" data-aos="fade-up">
       <form onSubmit={handleSubmit} className="bg-white sm:p-8 p-4 rounded-lg">
         <h1 className="text-4xl font-bold text-center sm:my-5 my-1" data-aos="fade-up">Let’s Talk</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-3">
-          <div data-aos="fade-up">
+          <div>
             <label className="font-bold">Full Name</label>
             <input
               type="text"
@@ -77,7 +77,7 @@ return (
               required
             />
           </div>
-          <div className="mt-3 md:mt-0" data-aos="fade-up">
+          <div className="mt-3 md:mt-0">
             <label className="font-bold">Email</label>
             <input
               type="email"
@@ -88,7 +88,7 @@ return (
             />
           </div>
         </div>
-        <div className="mt-3" data-aos="fade-up">
+        <div className="mt-3">
           <label className="font-bold">Subject</label>
           <input
             type="text"
@@ -98,7 +98,7 @@ return (
             required
           />
         </div>
-        <div className="mt-3" data-aos="fade-up">
+        <div className="mt-3">
           <label className="font-bold" for="description">Description</label>
           <textarea 
               className="w-full px-4 py-2 mt-1 bg-gray-100 rounded-lg focus:outline-none focus:ring-1 focus:ring-purple-900 border-b-2  border-purple-900 transition duration-300"    
