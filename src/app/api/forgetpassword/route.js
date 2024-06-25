@@ -22,8 +22,7 @@ export async function POST(request) {
     existingUser.resetToken = passwordResetToken;
     existingUser.resetTokenExpiry = passwordResetExpires;
 
-    const resetUrl = `localhost:3000/resetpassword/${resetToken}`;
-    // console.log(resetUrl);
+    const resetUrl = `https://futureinterns.vercel.app//resetpassword/${resetToken}`;
 
     const body = "Reset Password by clicking on following URL: " + resetUrl;
     const msg = {

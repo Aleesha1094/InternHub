@@ -41,12 +41,6 @@ function ResetPassword ({params}) {
     verifyToken();
   }, [params.token]);
 
-  // useEffect(() => {
-  //   if (sessionStatus === "authenticated") {
-  //       router.replace('/company')
-  //   }
-  //   }, [session, router]);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const password = e.target[0].value;
